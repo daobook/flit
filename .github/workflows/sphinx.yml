@@ -42,7 +42,7 @@ jobs:
         shell: bash
         run: |
           pip install --upgrade pip
-          pip install sphinx
+          pip install sphinx sphinxcontrib_github_alt sphinx_rtd_theme
 
       - name: 🔧 Build HTML
         run: |
