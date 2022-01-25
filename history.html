@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release history &mdash; Flit 3.6.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="Developing Flit" href="development.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Flit
+          </a>
+              <div class="version">
+                3.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="pyproject_toml.html">pyproject.toml 配置文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload.html">Controlling package uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducible.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why use Flit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release history</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-6">Version 3.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-5-1">Version 3.5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-5">Version 3.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-4">Version 3.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-3">Version 3.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-2">Version 3.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-1">Version 3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-0">Version 3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-2-3">Version 2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-2-2">Version 2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-2-1">Version 2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-2-0">Version 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-1-3">Version 1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-1-2-1">Version 1.2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-1-2">Version 1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-1-1">Version 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-1-0">Version 1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-13">Version 0.13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-12-3">Version 0.12.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-12-2">Version 0.12.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-12-1">Version 0.12.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-12">Version 0.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-11-4">Version 0.11.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-11-3">Version 0.11.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-11-2">Version 0.11.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-11-1">Version 0.11.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-11">Version 0.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-10">Version 0.10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-9">Version 0.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-8">Version 0.8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-7">Version 0.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-6">Version 0.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-5">Version 0.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-0-4">Version 0.4</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Flit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Release history</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/history.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="release-history">
+<h1>Release history<a class="headerlink" href="#release-history" title="永久链接至标题"></a></h1>
+<section id="version-3-6">
+<h2>Version 3.6<a class="headerlink" href="#version-3-6" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flit_core</span></code> now bundles the <a class="reference external" href="https://pypi.org/project/tomli/">tomli</a> TOML
+parser library (version 1.2.3) to avoid a circular dependency between
+<code class="docutils literal notranslate"><span class="pre">flit_core</span></code> and <code class="docutils literal notranslate"><span class="pre">tomli</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/492/">PR #492</a>). This means <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> now has
+no dependencies except Python itself, both at build time and at runtime,
+simplifying <a class="reference internal" href="bootstrap.html"><span class="doc">bootstrapping</span></a>.</p></li>
+</ul>
+</section>
+<section id="version-3-5-1">
+<h2>Version 3.5.1<a class="headerlink" href="#version-3-5-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fix development installs with <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span> <span class="pre">--symlink</span></code> and <code class="docutils literal notranslate"><span class="pre">--pth-file</span></code>,
+which were broken in 3.5.0, especially for packages using a <code class="docutils literal notranslate"><span class="pre">src</span></code> folder
+(<a class="reference external" href="https://github.com/pypa/flit/pull/472/">PR #472</a>).</p></li>
+</ul>
+</section>
+<section id="version-3-5">
+<h2>Version 3.5<a class="headerlink" href="#version-3-5" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>You can now use Flit to distribute a module or package inside a namespace
+package (as defined by <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0420"><strong>PEP 420</strong></a>). To do this, specify the import name of the
+concrete, inner module you are packaging - e.g. <code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">&quot;sphinxcontrib.foo&quot;</span></code>
+- either in the <code class="docutils literal notranslate"><span class="pre">[project]</span></code> table, or under <code class="docutils literal notranslate"><span class="pre">[tool.flit.module]</span></code> if you
+want to use a different name on PyPI (<a class="reference external" href="https://github.com/pypa/flit/pull/468/">PR #468</a>).</p></li>
+<li><p>Flit no longer generates a <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file in sdists (<code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> packages)
+by default (<a class="reference external" href="https://github.com/pypa/flit/pull/462/">PR #462</a>). Modern packaging tools don’t need this. You can
+use the <code class="docutils literal notranslate"><span class="pre">--setup-py</span></code> flag to keep adding it for now, but this will probably
+be removed at some point in the future.</p></li>
+<li><p>Fixed how <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code> handles authors’ names with non-ASCII characters
+(<a class="reference external" href="https://github.com/pypa/flit/pull/460/">PR #460</a>).</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code> generates a LICENSE file, the new <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> now
+references it (<a class="reference external" href="https://github.com/pypa/flit/pull/467/">PR #467</a>).</p></li>
+</ul>
+</section>
+<section id="version-3-4">
+<h2>Version 3.4<a class="headerlink" href="#version-3-4" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Python 3.6 or above is now required, both for <code class="docutils literal notranslate"><span class="pre">flit</span></code> and <code class="docutils literal notranslate"><span class="pre">flit_core</span></code>.</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">--setup-py</span></code> option to <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">build</span></code> and <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">publish</span></code>, and a
+warning when neither this nor <code class="docutils literal notranslate"><span class="pre">--no-setup-py</span></code> are specified (<a class="reference external" href="https://github.com/pypa/flit/pull/431/">PR #431</a>).
+A future version will stop generating <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> files in sdists by default.</p></li>
+<li><p>Add support for standardised editable installs - <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span></code> -
+according to <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0660"><strong>PEP 660</strong></a> (<a class="reference external" href="https://github.com/pypa/flit/pull/400/">PR #400</a>).</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">--pypirc</span></code> option for <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">publish</span></code> to specify an alternative path
+to a <code class="docutils literal notranslate"><span class="pre">.pypirc</span></code> config file describing package indexes (<a class="reference external" href="https://github.com/pypa/flit/pull/434/">PR #434</a>).</p></li>
+<li><p>Fix installing dependencies specified in a <code class="docutils literal notranslate"><span class="pre">[project]</span></code> table (<a class="reference external" href="https://github.com/pypa/flit/pull/433/">PR #433</a>).</p></li>
+<li><p>Fix building wheels when <code class="docutils literal notranslate"><span class="pre">SOURCE_DATE_EPOCH</span></code> (see <a class="reference internal" href="reproducible.html"><span class="doc">Reproducible builds</span></a>) is
+set to a date before 1980 (<a class="reference external" href="https://github.com/pypa/flit/pull/448/">PR #448</a>).</p></li>
+<li><p>Switch to using the <a class="reference external" href="https://pypi.org/project/tomli/">tomli</a> TOML parser,
+in common with other packaging projects (<a class="reference external" href="https://github.com/pypa/flit/pull/438/">PR #438</a>).
+This supports TOML version 1.0.</p></li>
+<li><p>Add a document on <a class="reference internal" href="bootstrap.html"><span class="doc">Bootstrapping</span></a> (<a class="reference external" href="https://github.com/pypa/flit/pull/441/">PR #441</a>).</p></li>
+</ul>
+</section>
+<section id="version-3-3">
+<h2>Version 3.3<a class="headerlink" href="#version-3-3" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PKG-INFO</span></code> files in sdists are now generated the same way as <code class="docutils literal notranslate"><span class="pre">METADATA</span></code> in
+wheels, fixing some issues with sdists (<a class="reference external" href="https://github.com/pypa/flit/pull/410/">PR #410</a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">publish</span></code> now sends SHA-256 hashes, fixing uploads to GitLab package
+repositories (<a class="reference external" href="https://github.com/pypa/flit/pull/416/">PR #416</a>).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">[project]</span></code> metadata table from <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0621"><strong>PEP 621</strong></a> is now fully supported and
+<a class="reference internal" href="pyproject_toml.html#pyproject-toml-project"><span class="std std-ref">documented</span></a>. Projects using this can now
+specify <code class="docutils literal notranslate"><span class="pre">requires</span> <span class="pre">=</span> <span class="pre">[&quot;flit_core</span> <span class="pre">&gt;=3.2,&lt;4&quot;]</span></code> in the <code class="docutils literal notranslate"><span class="pre">[build-system]</span></code> table.</p></li>
+</ul>
+</section>
+<section id="version-3-2">
+<h2>Version 3.2<a class="headerlink" href="#version-3-2" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Experimental support for specifying metadata in a <code class="docutils literal notranslate"><span class="pre">[project]</span></code> table in
+<code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> as specified by <span class="target" id="index-3"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0621"><strong>PEP 621</strong></a> (<a class="reference external" href="https://github.com/pypa/flit/pull/393/">PR #393</a>). If you try
+using this, please specify <code class="docutils literal notranslate"><span class="pre">requires</span> <span class="pre">=</span> <span class="pre">[&quot;flit_core</span> <span class="pre">&gt;=3.2.0,&lt;3.3&quot;]</span></code> in the
+<code class="docutils literal notranslate"><span class="pre">[build-system]</span></code> table for now, in case it needs to change for the next
+release.</p></li>
+<li><p>Fix writing METADATA file with multi-line information in certain fields
+such as <code class="docutils literal notranslate"><span class="pre">Author</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/402/">PR #402</a>).</p></li>
+<li><p>Fix building wheel when a directory such as LICENSES appears in the project
+root directory (<a class="reference external" href="https://github.com/pypa/flit/pull/401/">PR #401</a>).</p></li>
+</ul>
+</section>
+<section id="version-3-1">
+<h2>Version 3.1<a class="headerlink" href="#version-3-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Update handling of names &amp; version numbers in wheel filenames and
+<code class="docutils literal notranslate"><span class="pre">.dist-info</span></code> folders in line with changes in the specs (<a class="reference external" href="https://github.com/pypa/flit/pull/395/">PR #395</a>).</p></li>
+<li><p>Switch from the deprecated <code class="docutils literal notranslate"><span class="pre">pytoml</span></code> package to <code class="docutils literal notranslate"><span class="pre">toml</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/378/">PR #378</a>).</p></li>
+<li><p>Fix specifying backend-path in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> for flit-core (as a list
+instead of a string).</p></li>
+</ul>
+</section>
+<section id="version-3-0">
+<h2>Version 3.0<a class="headerlink" href="#version-3-0" title="永久链接至标题"></a></h2>
+<p>Breaking changes:</p>
+<ul class="simple">
+<li><p>Projects must now provide Flit with information in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files,
+not the older <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code> format (<a class="reference external" href="https://github.com/pypa/flit/pull/338/">PR #338</a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit_core</span></code> once again requires Python 3 (&gt;=3.4). Packages that support
+Python 2 can still be built by <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> 2.x, but can’t rely on new
+features (<a class="reference external" href="https://github.com/pypa/flit/pull/342/">PR #342</a>).</p></li>
+<li><p>The deprecated <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">installfrom</span></code> command was removed (<a class="reference external" href="https://github.com/pypa/flit/pull/334/">PR #334</a>).
+You can use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+https://github.com/...</span></code> instead.</p></li>
+</ul>
+<p>Features and fixes:</p>
+<ul class="simple">
+<li><p>Fix building sdists from a git repository with non-ASCII characters in
+filenames (<a class="reference external" href="https://github.com/pypa/flit/pull/346/">PR #346</a>).</p></li>
+<li><p>Fix identifying the version number when the code contains a subscript
+assignment before <code class="docutils literal notranslate"><span class="pre">__version__</span> <span class="pre">=</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/348/">PR #348</a>).</p></li>
+<li><p>Script entry points can now use a class method (<a class="reference external" href="https://github.com/pypa/flit/pull/359/">PR #359</a>).</p></li>
+<li><p>Set suitable permission bits on metadata files in wheels (<a class="reference external" href="https://github.com/pypa/flit/pull/256/">PR #256</a>).</p></li>
+<li><p>Fixed line endings in the <code class="docutils literal notranslate"><span class="pre">RECORD</span></code> file when installing on Windows
+(<a class="reference external" href="https://github.com/pypa/flit/pull/368/">PR #368</a>).</p></li>
+<li><p>Support for recording the source of local installations, as in <span class="target" id="index-4"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0610"><strong>PEP 610</strong></a>
+(<a class="reference external" href="https://github.com/pypa/flit/pull/335/">PR #335</a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code> will check for a README in the root of the project and
+automatically set it as <code class="docutils literal notranslate"><span class="pre">description-file</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/337/">PR #337</a>).</p></li>
+<li><p>Pygments is not required for checking reStructuredText READMEs (<a class="reference external" href="https://github.com/pypa/flit/pull/357/">PR #357</a>).</p></li>
+<li><p>Packages where the version number can be recognised without executing their
+code don’t need their dependencies installed to build, which should make them
+build faster (<a class="reference external" href="https://github.com/pypa/flit/pull/361/">PR #361</a>).</p></li>
+<li><p>Ensure the installed <code class="docutils literal notranslate"><span class="pre">RECORD</span></code> file is predictably ordered (<a class="reference external" href="https://github.com/pypa/flit/pull/366/">PR #366</a>).</p></li>
+</ul>
+</section>
+<section id="version-2-3">
+<h2>Version 2.3<a class="headerlink" href="#version-2-3" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>New projects created with <a class="reference internal" href="cmdline.html#init-cmd"><span class="std std-ref">flit init</span></a> now declare that they require
+<code class="docutils literal notranslate"><span class="pre">flit_core</span> <span class="pre">&gt;=2,&lt;4</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/328/">PR #328</a>). Any projects using <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>
+(not <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code>) should be compatible with flit 3.x.</p></li>
+<li><p>Fix selecting files from a git submodule to include in an sdist
+(<a class="reference external" href="https://github.com/pypa/flit/pull/324/">PR #324</a>).</p></li>
+<li><p>Fix checking classifiers when no writeable cache directory is available
+(<a class="reference external" href="https://github.com/pypa/flit/pull/319/">PR #319</a>).</p></li>
+<li><p>Better errors when trying to install to a mis-spelled or missing Python
+interpreter (<a class="reference external" href="https://github.com/pypa/flit/pull/331/">PR #331</a>).</p></li>
+<li><p>Fix specifying <code class="docutils literal notranslate"><span class="pre">--repository</span></code> before <code class="docutils literal notranslate"><span class="pre">upload</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/322/">PR #322</a>). Passing the
+option like this is deprecated, and you should now pass it after <code class="docutils literal notranslate"><span class="pre">upload</span></code>.</p></li>
+<li><p>Documentation improvements (<a class="reference external" href="https://github.com/pypa/flit/pull/327/">PR #327</a>, <a class="reference external" href="https://github.com/pypa/flit/pull/318/">PR #318</a>, <a class="reference external" href="https://github.com/pypa/flit/pull/314/">PR #314</a>)</p></li>
+</ul>
+</section>
+<section id="version-2-2">
+<h2>Version 2.2<a class="headerlink" href="#version-2-2" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Allow underscores in package names with Python 2 (<a class="reference external" href="https://github.com/pypa/flit/pull/305/">PR #305</a>).</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">--no-setup-py</span></code> option to build sdists without a backwards-compatible
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file (<a class="reference external" href="https://github.com/pypa/flit/pull/311/">PR #311</a>).</p></li>
+<li><p>Fix the generated <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file for packages using a <code class="docutils literal notranslate"><span class="pre">src/</span></code> layout
+(<a class="reference external" href="https://github.com/pypa/flit/pull/303/">PR #303</a>).</p></li>
+<li><p>Fix detecting when more than one file matches the module name specified
+(<a class="reference external" href="https://github.com/pypa/flit/pull/307/">PR #307</a>).</p></li>
+<li><p>Fix installing to a venv on Windows with the <code class="docutils literal notranslate"><span class="pre">--python</span></code> option
+(<a class="reference external" href="https://github.com/pypa/flit/pull/300/">PR #300</a>).</p></li>
+<li><p>Don’t echo the command in scripts installed with <code class="docutils literal notranslate"><span class="pre">--symlink</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--pth-file</span></code> on Windows (<a class="reference external" href="https://github.com/pypa/flit/pull/310/">PR #310</a>).</p></li>
+<li><p>New <code class="docutils literal notranslate"><span class="pre">bootstrap_dev.py</span></code> script to set up a development installation of Flit
+from the repository (<a class="reference external" href="https://github.com/pypa/flit/pull/301/">PR #301</a>, <a class="reference external" href="https://github.com/pypa/flit/pull/306/">PR #306</a>).</p></li>
+</ul>
+</section>
+<section id="version-2-1">
+<h2>Version 2.1<a class="headerlink" href="#version-2-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Use compression when adding files to wheels.</p></li>
+<li><p>Added the <span class="target" id="index-5"></span><a class="reference internal" href="cmdline.html#envvar-FLIT_INSTALL_PYTHON"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">FLIT_INSTALL_PYTHON</span></code></a> environment variable (<a class="reference external" href="https://github.com/pypa/flit/pull/295/">PR #295</a>),
+to configure flit to always install into a Python other than the one it’s
+running on.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit_core</span></code> uses the <code class="docutils literal notranslate"><span class="pre">intreehooks</span></code> shim package to load its bootstrapping
+backend, until a released version of pip supports the standard
+<code class="docutils literal notranslate"><span class="pre">backend-path</span></code> mechanism.</p></li>
+</ul>
+</section>
+<section id="version-2-0">
+<h2>Version 2.0<a class="headerlink" href="#version-2-0" title="永久链接至标题"></a></h2>
+<p>Flit 2 is a major architecture change. The <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> package now provides
+a <span class="target" id="index-6"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0517"><strong>PEP 517</strong></a> backend for building packages, while <code class="docutils literal notranslate"><span class="pre">flit</span></code> is a
+<a class="reference internal" href="cmdline.html"><span class="doc">command line interface</span></a> extending that.</p>
+<p>The build backend works on Python 2, so tools like pip should be able to install
+packages built with flit from source on Python 2.
+The <code class="docutils literal notranslate"><span class="pre">flit</span></code> command requires Python 3.5 or above.
+You will need to change the build-system table in your <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file
+to look like this:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span><span class="w"></span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;flit_core &gt;=2,&lt;4&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flit_core.buildapi&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Other changes include:</p>
+<ul class="simple">
+<li><p>Support for storing your code under a <code class="docutils literal notranslate"><span class="pre">src/</span></code> folder (<a class="reference external" href="https://github.com/pypa/flit/pull/260/">PR #260</a>).
+You don’t need to change any configuration if you do this.</p></li>
+<li><p>Options to control what files are included in an sdist - see
+<a class="reference internal" href="pyproject_toml.html#pyproject-toml-sdist"><span class="std std-ref">Sdist 部分</span></a> for the details.</p></li>
+<li><p>Requirements can specify a URL ‘direct reference’, as an alternative to a
+version number, with the syntax defined in <span class="target" id="index-7"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0440"><strong>PEP 440</strong></a>:
+<code class="docutils literal notranslate"><span class="pre">requests</span> <span class="pre">&#64;</span> <span class="pre">https://example.com/requests-2.22.0.tar.gz</span></code>.</p></li>
+<li><p>Fix the shebang of scripts installed with the <code class="docutils literal notranslate"><span class="pre">--python</span></code> option and the
+<code class="docutils literal notranslate"><span class="pre">--symlink</span></code> flag (<a class="reference external" href="https://github.com/pypa/flit/pull/286/">PR #286</a>).</p></li>
+<li><p>Installing with <code class="docutils literal notranslate"><span class="pre">--deps</span> <span class="pre">develop</span></code> now installs normal dependencies
+as well as development dependencies.</p></li>
+<li><p>Author email is no longer required in the metadata table (<a class="reference external" href="https://github.com/pypa/flit/pull/289/">PR #289</a>).</p></li>
+<li><p>More error messages are now shown without a traceback (<a class="reference external" href="https://github.com/pypa/flit/pull/254/">PR #254</a>)</p></li>
+</ul>
+</section>
+<section id="version-1-3">
+<h2>Version 1.3<a class="headerlink" href="#version-1-3" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fix for building sdists from a subdirectory in a Mercurial repository
+(<a class="reference external" href="https://github.com/pypa/flit/pull/233/">PR #233</a>).</p></li>
+<li><p>Fix for getting the docstring and version from modules defining their encoding
+(<a class="reference external" href="https://github.com/pypa/flit/pull/239/">PR #239</a>).</p></li>
+<li><p>Fix for installing packages with <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">installfrom</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/221/">PR #221</a>).</p></li>
+<li><p>Packages with requirements no longer get a spurious <code class="docutils literal notranslate"><span class="pre">Provides-Extra:</span> <span class="pre">.none</span></code>
+metadata entry (<a class="reference external" href="https://github.com/pypa/flit/issues/228/">#228</a>).</p></li>
+<li><p>Better check of whether <code class="docutils literal notranslate"><span class="pre">python-requires</span></code> includes any Python 2 version
+(<a class="reference external" href="https://github.com/pypa/flit/pull/232/">PR #232</a>).</p></li>
+<li><p>Better check of home page URLs in <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/230/">PR #230</a>).</p></li>
+<li><p>Better error message when the description file is not found (<a class="reference external" href="https://github.com/pypa/flit/pull/234/">PR #234</a>).</p></li>
+<li><p>Updated a help message to refer to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/240/">PR #240</a>).</p></li>
+<li><p>Improve tests of <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/229/">PR #229</a>).</p></li>
+</ul>
+</section>
+<section id="version-1-2-1">
+<h2>Version 1.2.1<a class="headerlink" href="#version-1-2-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fix for installing packages with <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code>.</p></li>
+<li><p>Make <code class="docutils literal notranslate"><span class="pre">requests_download</span></code> an extra dependency, to avoid a circular build
+dependency. To use <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">installfrom</span></code>, you can install with
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">flit[installfrom]</span></code>. Note that the <code class="docutils literal notranslate"><span class="pre">installfrom</span></code> subcommand
+is deprecated, as it will soon be possible to use pip to install Flit projects
+directly from a VCS URL.</p></li>
+</ul>
+</section>
+<section id="version-1-2">
+<h2>Version 1.2<a class="headerlink" href="#version-1-2" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fixes for packages specifying <code class="docutils literal notranslate"><span class="pre">requires-extra</span></code>: sdists should now work, and
+environment markers can be used together with <code class="docutils literal notranslate"><span class="pre">requires-extra</span></code>.</p></li>
+<li><p>Fix running <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">installfrom</span></code> without a config file present in the
+working directory.</p></li>
+<li><p>The error message for a missing or empty docstring tells you what file
+the docstring should be in.</p></li>
+<li><p>Improvements to documentation on version selectors for requirements.</p></li>
+</ul>
+</section>
+<section id="version-1-1">
+<h2>Version 1.1<a class="headerlink" href="#version-1-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Packages can now have ‘extras’, specified as <code class="docutils literal notranslate"><span class="pre">requires-extra</span></code> in the
+<a class="reference internal" href="pyproject_toml.html"><span class="doc">pyproject.toml file</span></a>. These are additional dependencies
+for optional features.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">home-page</span></code> metadata field is no longer required.</p></li>
+<li><p>Additional project URLs are now validated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">-V</span></code> is now equivalent to <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">--version</span></code>.</p></li>
+<li><p>Various improvements to documentation.</p></li>
+</ul>
+</section>
+<section id="version-1-0">
+<h2>Version 1.0<a class="headerlink" href="#version-1-0" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>The description file may now be written in reStructuredText, Markdown or
+plain text. The file extension should indicate which of these formats it is
+(<code class="docutils literal notranslate"><span class="pre">.rst</span></code>, <code class="docutils literal notranslate"><span class="pre">.md</span></code> or <code class="docutils literal notranslate"><span class="pre">.txt</span></code>). Previously, only reStructuredText was
+officially supported.</p></li>
+<li><p>Multiple links (e.g. documentation, bug tracker) can now be specified in a
+new <a class="reference internal" href="pyproject_toml.html#pyproject-toml-urls"><span class="std std-ref">[tool.flit.metadata.urls] section</span></a> of
+<code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p></li>
+<li><p>Dependencies are now correctly installed to the target Python when you use
+the <code class="docutils literal notranslate"><span class="pre">--symlink</span></code> or <code class="docutils literal notranslate"><span class="pre">--pth-file</span></code> options.</p></li>
+<li><p>Dependencies are only installed to the Python where Flit is running if
+it fails to get the docstring and version number without them.</p></li>
+<li><p>The commands deprecated in 0.13—<code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">wheel</span></code>, <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">sdist</span></code> and
+<code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">register</span></code>—have been removed.</p></li>
+</ul>
+<p>Although version 1.0 sounds like a milestone, there’s nothing that makes this
+release especially significant. It doesn’t represent a step change in stability
+or completeness. Flit has been gradually maturing for some time, and I chose
+this point to end the series of 0.x version numbers.</p>
+</section>
+<section id="version-0-13">
+<h2>Version 0.13<a class="headerlink" href="#version-0-13" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Better validation of several metadata fields (<code class="docutils literal notranslate"><span class="pre">dist-name</span></code>, <code class="docutils literal notranslate"><span class="pre">requires</span></code>,
+<code class="docutils literal notranslate"><span class="pre">requires-python</span></code>, <code class="docutils literal notranslate"><span class="pre">home-page</span></code>), and of the version number.</p></li>
+<li><p>New <span class="target" id="index-8"></span><a class="reference internal" href="cmdline.html#envvar-FLIT_ALLOW_INVALID"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">FLIT_ALLOW_INVALID</span></code></a> environment variable to ignore validation
+failures in case they go wrong.</p></li>
+<li><p>The list of valid classifiers is now fetched from Warehouse (<a class="reference external" href="https://pypi.org">https://pypi.org</a>),
+rather than the older <a class="reference external" href="https://pypi.python.org">https://pypi.python.org</a> site.</p></li>
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">wheel</span></code> and <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">sdist</span></code> subcommands: use
+<a class="reference internal" href="cmdline.html#build-cmd"><span class="std std-ref">flit build</span></a>.</p></li>
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">register</span></code>: you can no longer register a package separately
+from uploading it.</p></li>
+</ul>
+</section>
+<section id="version-0-12-3">
+<h2>Version 0.12.3<a class="headerlink" href="#version-0-12-3" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fix building and installing packages with a <code class="docutils literal notranslate"><span class="pre">-</span></code> in the distribution name.</p></li>
+<li><p>Fix numbering in README.</p></li>
+</ul>
+</section>
+<section id="version-0-12-2">
+<h2>Version 0.12.2<a class="headerlink" href="#version-0-12-2" title="永久链接至标题"></a></h2>
+<ul>
+<li><p>New tool to convert <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code> to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">flit</span><span class="o">.</span><span class="n">tomlify</span>
+</pre></div>
+</div>
+</li>
+<li><p>Use the PAX tar format for sdists, as specified by PEP 517.</p></li>
+</ul>
+</section>
+<section id="version-0-12-1">
+<h2>Version 0.12.1<a class="headerlink" href="#version-0-12-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Restore dependency on <code class="docutils literal notranslate"><span class="pre">zipfile36</span></code> backport package.</p></li>
+<li><p>Add some missing options to documentation of <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code> subcommand.</p></li>
+<li><p>Rearrange environment variables in the docs.</p></li>
+</ul>
+</section>
+<section id="version-0-12">
+<h2>Version 0.12<a class="headerlink" href="#version-0-12" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Switch the config to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> by default instead of <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code>,
+and implement the PEP 517 API.</p></li>
+<li><p>A new option <code class="docutils literal notranslate"><span class="pre">--pth-file</span></code> allows for development installation on Windows
+(where <code class="docutils literal notranslate"><span class="pre">--symlink</span></code> usually won’t work).</p></li>
+<li><p>Normalise file permissions in the zip file, making builds more reproducible
+across different systems.</p></li>
+<li><p>Sdists (.tar.gz packages) can now also be reproducibly built by setting
+<span class="target" id="index-9"></span><a class="reference internal" href="cmdline.html#envvar-SOURCE_DATE_EPOCH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">SOURCE_DATE_EPOCH</span></code></a>.</p></li>
+<li><p>For most modules, Flit can now extract the version number and docstring
+without importing it. It will still fall back to importing where getting
+these from the AST fails.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">build</span></code> will build the wheel from the sdist, helping to ensure that
+files aren’t left out of the sdist.</p></li>
+<li><p>All list fields in the INI file now ignore blank lines (<code class="docutils literal notranslate"><span class="pre">requires</span></code>,
+<code class="docutils literal notranslate"><span class="pre">dev-requires</span></code>, <code class="docutils literal notranslate"><span class="pre">classifiers</span></code>).</p></li>
+<li><p>Fix the path separator in the <code class="docutils literal notranslate"><span class="pre">RECORD</span></code> file of a wheel built on Windows.</p></li>
+<li><p>Some minor fixes to building reproducible wheels.</p></li>
+<li><p>If building a wheel fails, the temporary file created will be cleaned up.</p></li>
+<li><p>Various improvements to docs and README.</p></li>
+</ul>
+</section>
+<section id="version-0-11-4">
+<h2>Version 0.11.4<a class="headerlink" href="#version-0-11-4" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Explicitly open various files as UTF-8, rather than relying on locale
+encoding.</p></li>
+<li><p>Link to docs from README.</p></li>
+<li><p>Better test coverage, and a few minor fixes for problems revealed by tests.</p></li>
+</ul>
+</section>
+<section id="version-0-11-3">
+<h2>Version 0.11.3<a class="headerlink" href="#version-0-11-3" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fixed a bug causing failed uploads when the password is entered in the
+terminal.</p></li>
+</ul>
+</section>
+<section id="version-0-11-2">
+<h2>Version 0.11.2<a class="headerlink" href="#version-0-11-2" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>A couple of behaviour changes when uploading to warehouse.</p></li>
+</ul>
+</section>
+<section id="version-0-11-1">
+<h2>Version 0.11.1<a class="headerlink" href="#version-0-11-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fixed a bug when you use flit to build an sdist from a subdirectory inside a
+VCS checkout. The VCS is now correctly detected.</p></li>
+<li><p>Fix the rst checker for newer versions of docutils, by upgrading the bundled
+copy of readme_renderer.</p></li>
+</ul>
+</section>
+<section id="version-0-11">
+<h2>Version 0.11<a class="headerlink" href="#version-0-11" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Flit can now build sdists (tarballs) and upload them to PyPI, if your code is
+in a git or mercurial repository. There are new commands:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">build</span></code> builds both a wheel and an sdist.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">publish</span></code> builds and uploads a wheel and an sdist.</p></li>
+</ul>
+</li>
+<li><p>Smarter ways of getting the information needed for upload:</p>
+<ul>
+<li><p>If you have the <a class="reference external" href="https://github.com/jaraco/keyring">keyring</a> package
+installed, flit can use it to store your password, rather than keeping it
+in plain text in <code class="docutils literal notranslate"><span class="pre">~/.pypirc</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">~/.pypirc</span></code> does not already exist, and you are prompted for your
+username, flit will write it into that file.</p></li>
+<li><p>You can provide the information as environment variables:
+<span class="target" id="index-10"></span><a class="reference internal" href="cmdline.html#envvar-FLIT_USERNAME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">FLIT_USERNAME</span></code></a>, <span class="target" id="index-11"></span><a class="reference internal" href="cmdline.html#envvar-FLIT_PASSWORD"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">FLIT_PASSWORD</span></code></a> and <span class="target" id="index-12"></span><a class="reference internal" href="cmdline.html#envvar-FLIT_INDEX_URL"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">FLIT_INDEX_URL</span></code></a>.
+Use this to upload packages from a CI service, for instance.</p></li>
+</ul>
+</li>
+<li><p>Include ‘LICENSE’ or ‘COPYING’ files in wheels.</p></li>
+<li><p>Fix for <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span> <span class="pre">--symlink</span></code> inside a virtualenv.</p></li>
+</ul>
+</section>
+<section id="version-0-10">
+<h2>Version 0.10<a class="headerlink" href="#version-0-10" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Downstream packagers can use the <span class="target" id="index-13"></span><a class="reference internal" href="cmdline.html#envvar-FLIT_NO_NETWORK"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">FLIT_NO_NETWORK</span></code></a> environment
+variable to stop flit downloading data from the network.</p></li>
+</ul>
+</section>
+<section id="version-0-9">
+<h2>Version 0.9<a class="headerlink" href="#version-0-9" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code> and <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">installfrom</span></code> now take an optional <code class="docutils literal notranslate"><span class="pre">--python</span></code> argument,
+with the path to the Python executable you want to install it for.
+Using this, you can install modules to Python 2.</p></li>
+<li><p>Installing a module normally (without <code class="docutils literal notranslate"><span class="pre">--symlink</span></code>) builds a wheel and uses
+pip to install it, which should work better in some corner cases.</p></li>
+</ul>
+</section>
+<section id="version-0-8">
+<h2>Version 0.8<a class="headerlink" href="#version-0-8" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>A new <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">installfrom</span></code> subcommand to install a project from a source
+archive, such as from Github.</p></li>
+<li><p><a class="reference internal" href="reproducible.html"><span class="doc">Reproducible builds</span></a> - you can produce byte-for-byte
+identical wheels.</p></li>
+<li><p>A warning for non-canonical version numbers according to <a class="reference external" href="https://www.python.org/dev/peps/pep-0440/">PEP 440</a>.</p></li>
+<li><p>Fix for installing projects on Windows.</p></li>
+<li><p>Better error message when module docstring is only whitespace.</p></li>
+</ul>
+</section>
+<section id="version-0-7">
+<h2>Version 0.7<a class="headerlink" href="#version-0-7" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>A new <code class="docutils literal notranslate"><span class="pre">dev-requires</span></code> field in the config file for development requirements,
+used when doing <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code>.</p></li>
+<li><p>Added a <code class="docutils literal notranslate"><span class="pre">--deps</span></code> option for <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code> to control which dependencies
+are installed.</p></li>
+<li><p>Flit can now be invoked with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">flit</span></code>.</p></li>
+</ul>
+</section>
+<section id="version-0-6">
+<h2>Version 0.6<a class="headerlink" href="#version-0-6" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code> now ensures requirements specified in <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code> are
+installed, using pip.</p></li>
+<li><p>If you specify a description file, flit now warns you if it’s not valid
+reStructuredText (since invalid reStructuredText is treated as plain text on
+PyPI).</p></li>
+<li><p>Improved the error message for mis-spelled keys in <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code>.</p></li>
+</ul>
+</section>
+<section id="version-0-5">
+<h2>Version 0.5<a class="headerlink" href="#version-0-5" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>A new <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code> command to quickly define the essential basic metadata
+for a package.</p></li>
+<li><p>Support for entry points.</p></li>
+<li><p>A new <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">register</span></code> command to register a package without uploading it,
+for when you want to claim a name before you’re ready to release.</p></li>
+<li><p>Added a <code class="docutils literal notranslate"><span class="pre">--repository</span></code> option for specifying an alternative PyPI instance.</p></li>
+<li><p>Added a <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag to show debug-level log messages.</p></li>
+<li><p>Better error messages when the module docstring or <code class="docutils literal notranslate"><span class="pre">__version__</span></code> is missing.</p></li>
+</ul>
+</section>
+<section id="version-0-4">
+<h2>Version 0.4<a class="headerlink" href="#version-0-4" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Users can now specify <code class="docutils literal notranslate"><span class="pre">dist-name</span></code> in the config file if they need to use
+different names on PyPI and for imports.</p></li>
+<li><p>Classifiers are now checked against a locally cached list of valid
+classifiers.</p></li>
+<li><p>Packages can be locally installed into environments for development.</p></li>
+<li><p>Local installation now creates a PEP 376 <code class="docutils literal notranslate"><span class="pre">.dist-info</span></code> folder instead of
+<code class="docutils literal notranslate"><span class="pre">.egg-info</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="development.html" class="btn btn-neutral float-left" title="Developing Flit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2015, Thomas Kluyver.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The flit.ini config file &mdash; Flit 3.6.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Flit
+          </a>
+              <div class="version">
+                3.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="pyproject_toml.html">pyproject.toml 配置文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload.html">Controlling package uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducible.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why use Flit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Release history</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Flit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>The flit.ini config file</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/flit_ini.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-flit-ini-config-file">
+<h1>The flit.ini config file<a class="headerlink" href="#the-flit-ini-config-file" title="永久链接至标题"></a></h1>
+<p>This file lives next to the module or package.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Flit 0.12 and above uses a <a class="reference internal" href="pyproject_toml.html"><span class="doc">pyproject.toml file</span></a> file
+to store this information. Run <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">flit.tomlify</span></code> to convert a
+<code class="docutils literal notranslate"><span class="pre">flit.ini</span></code> file to <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
+</div>
+<section id="metadata-section">
+<h2>Metadata section<a class="headerlink" href="#metadata-section" title="永久链接至标题"></a></h2>
+<p>There are four required fields:</p>
+<dl class="simple">
+<dt>module</dt><dd><p>The name of the module/package, as you’d use in an import statement.</p>
+</dd>
+<dt>author</dt><dd><p>Your name</p>
+</dd>
+<dt>author-email</dt><dd><p>Your email address</p>
+</dd>
+<dt>home-page</dt><dd><p>A URL for the project, such as its Github repository.</p>
+</dd>
+</dl>
+<p>e.g. for flit itself</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[metadata]</span><span class="w"></span>
+<span class="na">module</span><span class="o">=</span><span class="s">flit</span><span class="w"></span>
+<span class="na">author</span><span class="o">=</span><span class="s">Thomas Kluyver</span><span class="w"></span>
+<span class="na">author-email</span><span class="o">=</span><span class="s">thomas@kluyver.me.uk</span><span class="w"></span>
+<span class="na">home-page</span><span class="o">=</span><span class="s">https://github.com/pypa/flit</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The remaining fields are optional:</p>
+<dl>
+<dt>requires</dt><dd><p>A list of other packages from PyPI that this package needs. Each package
+should be on its own line, and may be followed by a version specifier in
+parentheses, like <code class="docutils literal notranslate"><span class="pre">(&gt;=4.1)</span></code>, and/or an <a class="reference external" href="https://www.python.org/dev/peps/pep-0345/#environment-markers">environment marker</a>
+after a semicolon. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">requests (&gt;=2.6)</span><span class="w"></span>
+<span class="w">      </span><span class="na">configparser; python_version</span><span class="w"> </span><span class="o">=</span><span class="s">= &#39;2.7&#39;</span><span class="w"></span>
+</pre></div>
+</div>
+</dd>
+<dt>dev-requires</dt><dd><p>Packages that are required for development. This field is in the same format
+as <code class="docutils literal notranslate"><span class="pre">requires</span></code>.</p>
+<p>These are not (yet) encoded in the wheel, but are used when doing
+<code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code>.</p>
+</dd>
+<dt>description-file</dt><dd><p>A path (relative to the .ini file) to a file containing a longer description
+of your package to show on PyPI. This should be written in <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">reStructuredText</a>, if your long
+description is not valid reStructuredText, a warning will be printed,
+and it will be interpreted as plain text on PyPI.</p>
+</dd>
+<dt>classifiers</dt><dd><p>A list of <a class="reference external" href="https://pypi.python.org/pypi?%3Aaction=list_classifiers">Trove classifiers</a>,
+one per line, indented.</p>
+</dd>
+<dt>requires-python</dt><dd><p>A version specifier for the versions of Python this requires, e.g. <code class="docutils literal notranslate"><span class="pre">~=3.3</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&gt;=3.3,&lt;4</span></code> which are equivalents.</p>
+</dd>
+<dt>dist-name</dt><dd><p>If you want your package’s name on PyPI to be different from the importable
+module name, set this to the PyPI name.</p>
+</dd>
+<dt>keywords</dt><dd><p>Comma separated list of words to help with searching for your package.</p>
+</dd>
+<dt>license</dt><dd><p>The name of a license, if you’re using one for which there isn’t a Trove
+classifier. It’s recommended to use Trove classifiers instead of this in
+most cases.</p>
+</dd>
+<dt>maintainer, maintainer-email</dt><dd><p>Like author, for if you’ve taken over a project from someone else.</p>
+</dd>
+</dl>
+<p>Here’s the full example from flit itself:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[metadata]</span><span class="w"></span>
+<span class="na">author</span><span class="o">=</span><span class="s">Thomas Kluyver</span><span class="w"></span>
+<span class="na">author-email</span><span class="o">=</span><span class="s">thomas@kluyver.me.uk</span><span class="w"></span>
+<span class="na">home-page</span><span class="o">=</span><span class="s">https://github.com/pypa/flit</span><span class="w"></span>
+<span class="na">requires</span><span class="o">=</span><span class="s">requests</span><span class="w"></span>
+<span class="na">requires-python</span><span class="o">=</span><span class="w"> </span><span class="s">&gt;=3</span><span class="w"></span>
+<span class="na">description-file</span><span class="o">=</span><span class="s">README.rst</span><span class="w"></span>
+<span class="na">classifiers</span><span class="o">=</span><span class="s">Intended Audience :: Developers</span><span class="w"></span>
+<span class="w">    </span><span class="na">License :: OSI Approved :: BSD License</span><span class="w"></span>
+<span class="w">    </span><span class="na">Programming Language :: Python :: 3</span><span class="w"></span>
+<span class="w">    </span><span class="na">Topic :: Software Development :: Libraries :: Python Modules</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="scripts-section">
+<span id="flit-ini-scripts"></span><h2>Scripts section<a class="headerlink" href="#scripts-section" title="永久链接至标题"></a></h2>
+<p>Each key and value in this describes a shell command to be installed along with
+your package. These work like setuptools ‘entry points’. Here’s the section
+for flit:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[scripts]</span><span class="w"></span>
+<span class="na">flit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">flit:main</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will create a <code class="docutils literal notranslate"><span class="pre">flit</span></code> command, which will call the function <code class="docutils literal notranslate"><span class="pre">main()</span></code>
+imported from <code class="xref py py-mod docutils literal notranslate"><span class="pre">flit</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2015, Thomas Kluyver.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

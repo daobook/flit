@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyproject.toml 配置文件 &mdash; Flit 3.6.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Flit command line interface" href="cmdline.html" />
+    <link rel="prev" title="Flit 3.6.0" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Flit
+          </a>
+              <div class="version">
+                3.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pyproject.toml 配置文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#build-system-section">建设系统部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-style-metadata">新风格的元数据</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#urls-table">URL 表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-section">脚本部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#entry-points-sections">切入点部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-section">模块部分</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#old-style-metadata">Old style metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#urls-subsection">URLs subsection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pyproject-toml-scripts">脚本部分</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">切入点部分</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sdist-section">Sdist 部分</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload.html">Controlling package uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducible.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why use Flit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Release history</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Flit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>pyproject.toml 配置文件</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyproject_toml.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-pyproject-toml-config-file">
+<h1>pyproject.toml 配置文件<a class="headerlink" href="#the-pyproject-toml-config-file" title="永久链接至标题"></a></h1>
+<p>这个文件存在于模块或包的旁边。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>旧版本的 Flit（到 0.11 为止）使用一个 <a class="reference internal" href="flit_ini.html"><span class="doc">flit.ini 文件</span></a> 来提供类似的信息。这些文件不再适用于 Flit 3 及以上版本。</p>
+<p>运行 <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">flit.tomlify</span></code>，将 <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code> 文件转换为 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>。</p>
+</div>
+<section id="build-system-section">
+<h2>建设系统部分<a class="headerlink" href="#build-system-section" title="永久链接至标题"></a></h2>
+<p>这告诉像 pip 这样的工具要用 flit 来构建你的项目。这是由 PEP 517 定义的一个标准。对于任何使用 Flit 的新项目，它看起来像这样：</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span><span class="w"></span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;flit_core &gt;=3.2,&lt;4&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flit_core.buildapi&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>版本约束：</p>
+<ul class="simple">
+<li><p>目前，所有的软件包都应该指定 <code class="docutils literal notranslate"><span class="pre">&lt;4</span></code>，这样它们就不会受到下一个主要版本变化的影响。</p></li>
+<li><p><a class="reference internal" href="#pyproject-toml-project"><span class="std std-ref">新风格的元数据</span></a> requires <code class="docutils literal notranslate"><span class="pre">flit_core</span> <span class="pre">&gt;=3.2</span></code></p></li>
+<li><p><a class="reference internal" href="#pyproject-old-metadata"><span class="std std-ref">Old style metadata</span></a> requires <code class="docutils literal notranslate"><span class="pre">flit_core</span> <span class="pre">&gt;=2,&lt;4</span></code></p></li>
+<li><p>The older <a class="reference internal" href="flit_ini.html"><span class="doc">flit.ini file</span></a> requires <code class="docutils literal notranslate"><span class="pre">flit_core</span> <span class="pre">&lt;3</span></code>.</p></li>
+<li><p>TOML 在 1.0 版本中的新功能需要 <code class="docutils literal notranslate"><span class="pre">flit_core</span> <span class="pre">&gt;=3.4</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit_core</span></code> 3.3 是支持 Python 3.4 和 3.5 的最后一个版本。支持这些 Python 版本的软件包只能使用 <a class="reference external" href="https://toml.io/en/v0.5.0">TOML v0.5</a>。</p></li>
+<li><p>Only <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> 2.x can build packages on Python 2, so packages still
+supporting Python 2 cannot use new-style metadata (the <code class="docutils literal notranslate"><span class="pre">[project]</span></code> table).</p></li>
+</ul>
+</section>
+<section id="new-style-metadata">
+<span id="pyproject-toml-project"></span><h2>新风格的元数据<a class="headerlink" href="#new-style-metadata" title="永久链接至标题"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">3.2 新版功能.</span></p>
+</div>
+<p>指定项目元数据的新标准方式是在 <code class="docutils literal notranslate"><span class="pre">[project]</span></code> 表中，如 <span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0621"><strong>PEP 621</strong></a> 所定义。Flit 现在可以使用这个表或旧的 <code class="docutils literal notranslate"><span class="pre">[tool.flit.metadata]</span></code> 表（<a class="reference internal" href="#pyproject-old-metadata"><span class="std std-ref">下面描述的</span></a>），但它不允许你把它们混合起来。</p>
+<p>一个简单的 <code class="docutils literal notranslate"><span class="pre">[project]</span></code> 表可能看起来像这样：</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project]</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;astcheck&quot;</span><span class="w"></span>
+<span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Thomas Kluyver&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;thomas@kluyver.me.uk&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+<span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;README.rst&quot;</span><span class="w"></span>
+<span class="n">classifiers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;License :: OSI Approved :: MIT License&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+<span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&gt;=3.5&quot;</span><span class="w"></span>
+<span class="n">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;version&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;description&quot;</span><span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>允许的字段是：</p>
+<dl class="simple">
+<dt>name</dt><dd><p>你的软件包在 PyPI 上的名称。这个字段是必须的。对于 Flit 来说，这也是默认指向你的软件包的导入名称（如果需要不同的话，请看 <a class="reference internal" href="#pyproject-module"><span class="std std-ref">模块部分</span></a>）。</p>
+</dd>
+<dt>version</dt><dd><p>版本号是一个字符串。如果你想让 Flit 从 <code class="docutils literal notranslate"><span class="pre">__version__</span></code> 属性中得到这个数字，请不要在 TOML 配置中使用它，并在 <code class="docutils literal notranslate"><span class="pre">dynamic</span></code> 字段中包含 “version”。</p>
+</dd>
+<dt>description</dt><dd><p>你的项目的单行描述。如果你想让 Flit 从模块的文档串中得到这个描述，请不要在 TOML 配置中加入这个描述，并在 <code class="docutils literal notranslate"><span class="pre">dynamic</span></code> 字段中加入 “description”。</p>
+</dd>
+<dt>readme</dt><dd><p>一个文件的路径（相对于 .toml 文件），该文件包含对你的软件包的较长描述，以便在 PyPI 上显示。这应该用 <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">reStructuredText</a>、Markdown 或纯文本编写，文件名应该有适当的扩展名（<code class="docutils literal notranslate"><span class="pre">.rst</span></code>、<code class="docutils literal notranslate"><span class="pre">.md</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.txt</span></code>）。另外，<code class="docutils literal notranslate"><span class="pre">readme</span></code> 可以是一个表，有 <code class="docutils literal notranslate"><span class="pre">file</span></code> 键（相对路径）或 <code class="docutils literal notranslate"><span class="pre">text</span></code> 键（字面文本），还有一个可选的 <code class="docutils literal notranslate"><span class="pre">content-type</span></code> 键（例如 <code class="docutils literal notranslate"><span class="pre">text/x-rst</span></code>）。</p>
+</dd>
+<dt>requires-python</dt><dd><p>一个版本的指定符，表示这需要的 Python 版本，例如 <code class="docutils literal notranslate"><span class="pre">~=3.3</span></code> 或 <code class="docutils literal notranslate"><span class="pre">&gt;=3.3,&lt;4</span></code>，它们是等效的。</p>
+</dd>
+<dt>license</dt><dd><p>一个带有 <code class="docutils literal notranslate"><span class="pre">file</span></code> 键（许可证文件的相对路径）或 <code class="docutils literal notranslate"><span class="pre">text</span></code> 键（许可证文本）的表。</p>
+</dd>
+<dt>authors</dt><dd><p>带有 <code class="docutils literal notranslate"><span class="pre">name</span></code> 和 <code class="docutils literal notranslate"><span class="pre">email</span></code> 键（都是可选的）的表格列表，描述项目的作者。</p>
+</dd>
+<dt>maintainers</dt><dd><p>格式与 authors 相同。</p>
+</dd>
+<dt>keywords</dt><dd><p>一个帮助搜索你的包的单词列表。</p>
+</dd>
+<dt>classifiers</dt><dd><p><a class="reference external" href="https://pypi.python.org/pypi?%3Aaction=list_classifiers">Trove classifiers</a> 清单。在列表中加入 <code class="docutils literal notranslate"><span class="pre">Private</span> <span class="pre">::</span> <span class="pre">Do</span> <span class="pre">Not</span> <span class="pre">Upload</span></code>，以防止私人软件包被意外地上传到 PyPI。</p>
+</dd>
+<dt>dependencies &amp; optional-dependencies</dt><dd><p>参见 <a class="reference internal" href="#pyproject-project-dependencies"><span class="std std-ref">Dependencies</span></a>。</p>
+</dd>
+<dt>urls</dt><dd><p>参见：<a class="reference internal" href="#pyproject-project-urls"><span class="std std-ref">URL 表</span></a>。</p>
+</dd>
+<dt>scripts &amp; gui-scripts</dt><dd><p>参见：<a class="reference internal" href="#pyproject-project-scripts"><span class="std std-ref">脚本部分</span></a>。</p>
+</dd>
+<dt>entry-points</dt><dd><p>参见：<a class="reference internal" href="#pyproject-project-entrypoints"><span class="std std-ref">切入点部分</span></a>。</p>
+</dd>
+<dt>dynamic</dt><dd><p>一个没有在这里指定的字段名的列表，Flit 应该在构建时为其找到一个值。只有 “version” 和 “description” 被接受。</p>
+</dd>
+</dl>
+<section id="dependencies">
+<span id="pyproject-project-dependencies"></span><h3>Dependencies<a class="headerlink" href="#dependencies" title="永久链接至标题"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code> 字段是这个包需要的 PyPI 的其他包的列表。每个包后面都可以有一个版本说明，如 <code class="docutils literal notranslate"><span class="pre">&gt;=4.1</span></code>，和/或分号后的 <a class="reference external" href="https://www.python.org/dev/peps/pep-0508/#environment-markers">environment marker</a>。例如：</p>
+<blockquote>
+<div><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;requests &gt;=2.6&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;configparser; python_version == &#39;2.7&#39;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">[project.optional-dependencies]</span></code> 表包含了每个可选功能所需的软件包列表。要求的指定格式与 <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> 相同。比如说：</p>
+<blockquote>
+<div><div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project.optional-dependencies]</span><span class="w"></span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;pytest &gt;=2.7.3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;pytest-cov&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+<span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;sphinx&quot;</span><span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>你可以把这些可选功能称为任何你想要的东西，尽管 <code class="docutils literal notranslate"><span class="pre">test</span></code> 和 <code class="docutils literal notranslate"><span class="pre">doc</span></code> 是常见的功能。你可以在软件包名称或目录后面的方括号中指定它们的安装，例如：<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">'.[test]'</span></code>。</p>
+</section>
+<section id="urls-table">
+<span id="pyproject-project-urls"></span><h3>URL 表<a class="headerlink" href="#urls-table" title="永久链接至标题"></a></h3>
+<p>你在 <a class="reference external" href="https://pypi.org/">pypi.org</a> 的项目页面可以显示一些链接。例如，你可以把人们指向文档或错误跟踪器。</p>
+<p>这一部分在文件中被称为 <code class="docutils literal notranslate"><span class="pre">[project.urls]</span></code>。你可以在里面使用任何名字。这里是用于 flit 的：</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project.urls]</span><span class="w"></span>
+<span class="n">Documentation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://flit.readthedocs.io/en/latest/&quot;</span><span class="w"></span>
+<span class="n">Source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://github.com/pypa/flit&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="scripts-section">
+<span id="pyproject-project-scripts"></span><h3>脚本部分<a class="headerlink" href="#scripts-section" title="永久链接至标题"></a></h3>
+<p>这一部分在文件中被称为 <code class="docutils literal notranslate"><span class="pre">[project.scripts]</span></code>。每个键和值都描述了一个要和你的软件包一起安装的 shell 命令。这些工作就像 setuptools 的 ‘入口点’。下面是 flit 的部分：</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project.scripts]</span><span class="w"></span>
+<span class="n">flit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flit:main&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>这将创建一个 <code class="docutils literal notranslate"><span class="pre">flit</span></code> 命令，它将调用从 <code class="xref py py-mod docutils literal notranslate"><span class="pre">flit</span></code> 导入的函数 <code class="docutils literal notranslate"><span class="pre">main()</span></code>。</p>
+<p>一个名为 <code class="docutils literal notranslate"><span class="pre">[project.gui-scripts]</span></code> 的类似表格定义了启动 GUI 的命令。这只在 Windows 上有区别，因为 GUI 脚本的运行没有控制台。</p>
+</section>
+<section id="entry-points-sections">
+<span id="pyproject-project-entrypoints"></span><h3>切入点部分<a class="headerlink" href="#entry-points-sections" title="永久链接至标题"></a></h3>
+<p>你可以使用名为 <code class="samp docutils literal notranslate"><span class="pre">[project.entry-points.</span><em><span class="pre">groupname</span></em><span class="pre">]</span></code> 的部分来声明 <a class="reference external" href="http://entrypoints.readthedocs.io/en/latest/">entry points</a>。例如，从你的软件包中提供一个 pygments lexer：</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project.entry-points.&quot;pygments.lexers&quot;]</span><span class="w"></span>
+<span class="n">dogelang</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dogelang.lexer:DogeLexer&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>在每个 <code class="docutils literal notranslate"><span class="pre">package:name</span></code> 值中，冒号前的部分应该是一个可导入的模块名称，后半部分应该是该模块中可访问的对象名称。暴露什么对象的细节取决于你要扩展的应用程序。</p>
+<p>如果组名包含一个点，必须加引号（<code class="docutils literal notranslate"><span class="pre">&quot;pygments.lexers&quot;</span></code> 上面）。脚本入口是在 <a class="reference internal" href="#pyproject-project-scripts"><span class="std std-ref">scripts tables</span></a> 中定义的，所以你不能在这里使用组名 <code class="docutils literal notranslate"><span class="pre">console_scripts</span></code> 或 <code class="docutils literal notranslate"><span class="pre">gui_scripts</span></code>。</p>
+</section>
+<section id="module-section">
+<span id="pyproject-module"></span><h3>模块部分<a class="headerlink" href="#module-section" title="永久链接至标题"></a></h3>
+<p>如果你的软件包将有不同的安装和导入名称，你应该在 <code class="docutils literal notranslate"><span class="pre">[project]</span></code> 表中指定安装（PyPI）名称（<a class="reference internal" href="#pyproject-toml-project"><span class="std std-ref">见上文</span></a>），并在 <code class="docutils literal notranslate"><span class="pre">[tool.flit.module]</span></code> 表中指定导入名称：</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[project]</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pynsist&quot;</span><span class="w"></span>
+<span class="c1"># ...</span><span class="w"></span>
+
+<span class="k">[tool.flit.module]</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;nsist&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="old-style-metadata">
+<span id="pyproject-old-metadata"></span><h2>Old style metadata<a class="headerlink" href="#old-style-metadata" title="永久链接至标题"></a></h2>
+<p>Flit’s older way to specify metadata is in a <code class="docutils literal notranslate"><span class="pre">[tool.flit.metadata]</span></code> table,
+along with <code class="docutils literal notranslate"><span class="pre">[tool.flit.scripts]</span></code> and <code class="docutils literal notranslate"><span class="pre">[tool.flit.entrypoints]</span></code>, described
+below. This is still recognised for now, but you can’t mix it with
+<a class="reference internal" href="#pyproject-toml-project"><span class="std std-ref">新风格的元数据</span></a>.</p>
+<p>There are three required fields:</p>
+<dl class="simple">
+<dt>module</dt><dd><p>The name of the module/package, as you’d use in an import statement.</p>
+</dd>
+<dt>author</dt><dd><p>Your name</p>
+</dd>
+<dt>author-email</dt><dd><p>Your email address</p>
+</dd>
+</dl>
+<p>e.g. for flit itself</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.flit.metadata]</span><span class="w"></span>
+<span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flit&quot;</span><span class="w"></span>
+<span class="n">author</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Thomas Kluyver&quot;</span><span class="w"></span>
+<span class="n">author-email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;thomas@kluyver.me.uk&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">在 1.1 版更改: </span><code class="docutils literal notranslate"><span class="pre">home-page</span></code> was previously required.</p>
+</div>
+<p>The remaining fields are optional:</p>
+<dl>
+<dt>home-page</dt><dd><p>A URL for the project, such as its Github repository.</p>
+</dd>
+<dt>requires</dt><dd><p>A list of other packages from PyPI that this package needs. Each package may
+be followed by a version specifier like <code class="docutils literal notranslate"><span class="pre">(&gt;=4.1)</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;=4.1</span></code>, and/or an
+<a class="reference external" href="https://www.python.org/dev/peps/pep-0508/#environment-markers">environment marker</a>
+after a semicolon. For example:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;requests &gt;=2.6&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;configparser; python_version == &#39;2.7&#39;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+</dd>
+<dt>requires-extra</dt><dd><p>Lists of packages needed for every optional feature. The requirements
+are specified in the same format as for <code class="docutils literal notranslate"><span class="pre">requires</span></code>. The requirements of
+the two reserved extras <code class="docutils literal notranslate"><span class="pre">test</span></code> and <code class="docutils literal notranslate"><span class="pre">doc</span></code> as well as the extra <code class="docutils literal notranslate"><span class="pre">dev</span></code>
+are installed by <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code>. For example:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.flit.metadata.requires-extra]</span><span class="w"></span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;pytest &gt;=2.7.3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;pytest-cov&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+<span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;sphinx&quot;</span><span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">1.1 新版功能.</span></p>
+</div>
+</dd>
+<dt>description-file</dt><dd><p>A path (relative to the .toml file) to a file containing a longer description
+of your package to show on PyPI. This should be written in <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">reStructuredText</a>, Markdown or
+plain text, and the filename should have the appropriate extension
+(<code class="docutils literal notranslate"><span class="pre">.rst</span></code>, <code class="docutils literal notranslate"><span class="pre">.md</span></code> or <code class="docutils literal notranslate"><span class="pre">.txt</span></code>).</p>
+</dd>
+<dt>classifiers</dt><dd><p>A list of <a class="reference external" href="https://pypi.python.org/pypi?%3Aaction=list_classifiers">Trove classifiers</a>.
+Add <code class="docutils literal notranslate"><span class="pre">Private</span> <span class="pre">::</span> <span class="pre">Do</span> <span class="pre">Not</span> <span class="pre">Upload</span></code> into the list to prevent a private package
+from uploading on PyPI by accident.</p>
+</dd>
+<dt>requires-python</dt><dd><p>A version specifier for the versions of Python this requires, e.g. <code class="docutils literal notranslate"><span class="pre">~=3.3</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&gt;=3.3,&lt;4</span></code> which are equivalents.</p>
+</dd>
+<dt>dist-name</dt><dd><p>If you want your package’s name on PyPI to be different from the importable
+module name, set this to the PyPI name.</p>
+</dd>
+<dt>keywords</dt><dd><p>Comma separated list of words to help with searching for your package.</p>
+</dd>
+<dt>license</dt><dd><p>The name of a license, if you’re using one for which there isn’t a Trove
+classifier. It’s recommended to use Trove classifiers instead of this in
+most cases.</p>
+</dd>
+<dt>maintainer, maintainer-email</dt><dd><p>Like author, for if you’ve taken over a project from someone else.</p>
+</dd>
+</dl>
+<p>Here was the metadata section from flit using the older style:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.flit.metadata]</span><span class="w"></span>
+<span class="n">module</span><span class="o">=</span><span class="s">&quot;flit&quot;</span><span class="w"></span>
+<span class="n">author</span><span class="o">=</span><span class="s">&quot;Thomas Kluyver&quot;</span><span class="w"></span>
+<span class="n">author-email</span><span class="o">=</span><span class="s">&quot;thomas@kluyver.me.uk&quot;</span><span class="w"></span>
+<span class="n">home-page</span><span class="o">=</span><span class="s">&quot;https://github.com/pypa/flit&quot;</span><span class="w"></span>
+<span class="n">requires</span><span class="o">=</span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;flit_core &gt;=2.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;requests&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;docutils&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;tomli&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;tomli-w&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+<span class="n">requires-python</span><span class="o">=</span><span class="s">&quot;&gt;=3.6&quot;</span><span class="w"></span>
+<span class="n">description-file</span><span class="o">=</span><span class="s">&quot;README.rst&quot;</span><span class="w"></span>
+<span class="n">classifiers</span><span class="o">=</span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;Intended Audience :: Developers&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;License :: OSI Approved :: BSD License&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;Programming Language :: Python :: 3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;Topic :: Software Development :: Libraries :: Python Modules&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="urls-subsection">
+<span id="pyproject-toml-urls"></span><h3>URLs subsection<a class="headerlink" href="#urls-subsection" title="永久链接至标题"></a></h3>
+<p>Your project’s page on <a class="reference external" href="https://pypi.org/">pypi.org</a> can show a number of
+links, in addition to the <code class="docutils literal notranslate"><span class="pre">home-page</span></code> URL described above. You can
+point people to documentation or a bug tracker, for example.</p>
+<p>This section is called <code class="docutils literal notranslate"><span class="pre">[tool.flit.metadata.urls]</span></code> in the file. You can use
+any names inside it. Here it is for flit:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.flit.metadata.urls]</span><span class="w"></span>
+<span class="n">Documentation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://flit.readthedocs.io/en/latest/&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">1.0 新版功能.</span></p>
+</div>
+</section>
+<section id="pyproject-toml-scripts">
+<span id="id4"></span><h3>脚本部分<a class="headerlink" href="#pyproject-toml-scripts" title="永久链接至标题"></a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">[tool.flit.scripts]</span></code> table can be used along with <code class="docutils literal notranslate"><span class="pre">[tool.flit.metadata]</span></code>.
+It is in the same format as the newer <code class="docutils literal notranslate"><span class="pre">[project.scripts]</span></code> table
+<a class="reference internal" href="#pyproject-project-scripts"><span class="std std-ref">described above</span></a>.</p>
+</section>
+<section id="id5">
+<h3>切入点部分<a class="headerlink" href="#id5" title="永久链接至标题"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">[tool.flit.entrypoints]</span></code> tables can be used along with <code class="docutils literal notranslate"><span class="pre">[tool.flit.metadata]</span></code>.
+They are in the same format as the newer <code class="docutils literal notranslate"><span class="pre">[project.entry-points]</span></code> tables
+<a class="reference internal" href="#pyproject-project-entrypoints"><span class="std std-ref">described above</span></a>.</p>
+</section>
+</section>
+<section id="sdist-section">
+<span id="pyproject-toml-sdist"></span><h2>Sdist 部分<a class="headerlink" href="#sdist-section" title="永久链接至标题"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">2.0 新版功能.</span></p>
+</div>
+<p>当你使用 <a class="reference internal" href="cmdline.html#build-cmd"><span class="std std-ref">flit build</span></a> 或 <a class="reference internal" href="cmdline.html#publish-cmd"><span class="std std-ref">flit publish</span></a> 时，Flit 会建立一个 sdist（源码分布）tarball，其中包含被检查到版本控制（git 或 mercurial）的文件。如果你想要更多的控制，或者它不能识别你的版本控制系统，你可以在这部分给出路径列表或 glob 模式作为 <code class="docutils literal notranslate"><span class="pre">include</span></code> 和 <code class="docutils literal notranslate"><span class="pre">exclude</span></code>。例如：</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.flit.sdist]</span><span class="w"></span>
+<span class="n">include</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;doc/&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;doc/*.html&quot;</span><span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>这些路径：</p>
+<ul class="simple">
+<li><p>始终使用 <code class="docutils literal notranslate"><span class="pre">/</span></code> 作为分隔符（POSIX 风格）</p></li>
+<li><p>必须是包含 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> 的目录的相对路径。</p></li>
+<li><p>不能进入该目录之外（没有 <code class="docutils literal notranslate"><span class="pre">../</span></code> 的路径）。</p></li>
+<li><p>不能包含控制字符或 <code class="docutils literal notranslate"><span class="pre">&lt;&gt;:&quot;\\</span></code></p></li>
+<li><p>不能使用递归 glob 模式（<code class="docutils literal notranslate"><span class="pre">**/</span></code>）</p></li>
+<li><p>可以指代目录，在这种情况下，它们包括该目录下的一切，包括子目录</p></li>
+<li><p>应该与它们所指的文件的大小写相匹配，因为不区分大小写的匹配是依赖于平台的</p></li>
+</ul>
+<p>不适用的情况比适用的情况优先。</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>如果你没有使用 <a class="reference internal" href="cmdline.html#build-cmd"><span class="std std-ref">flit build</span></a>，而是通过其他构建前端使用 <code class="docutils literal notranslate"><span class="pre">flit_core</span></code>，Flit 不会检查 VCS 中的文件，而是构建一个 ‘最小’ 的 sdist（其中包括构建轮子所需的文件）。你必须调整你的包含/排除规则，以达到与你用 <a class="reference internal" href="cmdline.html#build-cmd"><span class="std std-ref">flit build</span></a> 得到的相同结果。</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Flit 3.6.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="cmdline.html" class="btn btn-neutral float-right" title="Flit command line interface" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2015, Thomas Kluyver.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

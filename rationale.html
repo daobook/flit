@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why use Flit? &mdash; Flit 3.6.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Bootstrapping" href="bootstrap.html" />
+    <link rel="prev" title="Reproducible builds" href="reproducible.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Flit
+          </a>
+              <div class="version">
+                3.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pyproject_toml.html">pyproject.toml 配置文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload.html">Controlling package uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducible.html">Reproducible builds</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Why use Flit?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#other-options">Other options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Release history</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Flit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Why use Flit?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rationale.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="why-use-flit">
+<h1>Why use Flit?<a class="headerlink" href="#why-use-flit" title="永久链接至标题"></a></h1>
+<p><em>Make the easy things easy and the hard things possible</em> is an old motto from
+the Perl community. Flit is entirely focused on the <em>easy things</em> part of that,
+and leaves the hard things up to other tools.</p>
+<p>Specifically, the easy things are pure Python packages with no build steps
+(neither compiling C code, nor bundling Javascript, etc.). The vast majority of
+packages on PyPI are like this: plain Python code, with maybe some static data
+files like icons included.</p>
+<p>It’s easy to underestimate the challenges involved in distributing and
+installing code, because it seems like you just need to copy some files into
+the right place. There’s a whole lot of metadata and tooling that has to work
+together around that fundamental step. But with the right tooling, a developer
+who wants to release their code doesn’t need to know about most of that.</p>
+<p>What, specifically, does Flit make easy?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code> helps you set up the information Flit needs about your
+package.</p></li>
+<li><p>Subpackages are automatically included: you only need to specify the
+top-level package.</p></li>
+<li><p>Data files within a package directory are automatically included.
+Missing data files has been a common packaging mistake with other tools.</p></li>
+<li><p>The version number is taken from your package’s <code class="docutils literal notranslate"><span class="pre">__version__</span></code> attribute,
+so that always matches the version that tools like pip see.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">publish</span></code> uploads a package to PyPI, so you don’t need a separate tool
+to do this.</p></li>
+</ul>
+<p>Setuptools, the most common tool for Python packaging, now has shortcuts for
+many of the same things. But it has to stay compatible with projects published
+many years ago, which limits what it can do by default.</p>
+<p>Flit also has some support for <a class="reference internal" href="reproducible.html"><span class="doc">reproducible builds</span></a>,
+a feature which some people care about.</p>
+<p>There have been many other efforts to improve the user experience of Python
+packaging, such as <a class="reference external" href="https://pypi.org/project/pbr/">pbr</a>, but before Flit,
+these tended to build on setuptools and distutils. That was a pragmatic
+decision, but it’s hard to build something radically different on top of those
+libraries. The existence of Flit spurred the development of new standards,
+like <span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0518"><strong>PEP 518</strong></a> and <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0517"><strong>PEP 517</strong></a>, which are now used by other packaging tools
+such as <a class="reference external" href="https://python-poetry.org/">Poetry</a> and
+<a class="reference external" href="https://pypi.org/project/enscons/">Enscons</a>.</p>
+<section id="other-options">
+<h2>Other options<a class="headerlink" href="#other-options" title="永久链接至标题"></a></h2>
+<p>If your package needs a build step, you won’t be able to use Flit.
+<a class="reference external" href="https://setuptools.readthedocs.io/en/latest/">Setuptools</a> is the de-facto
+standard, but newer tools such as <a class="reference external" href="https://pypi.org/project/enscons/">Enscons</a> also cover this case.</p>
+<p>Flit also doesn’t help you manage dependencies: you have to add them to
+<code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> by hand. Tools like <a class="reference external" href="https://python-poetry.org/">Poetry</a> and <a class="reference external" href="https://pypi.org/project/pipenv/">Pipenv</a> have features which help add and update
+dependencies on other packages.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reproducible.html" class="btn btn-neutral float-left" title="Reproducible builds" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="bootstrap.html" class="btn btn-neutral float-right" title="Bootstrapping" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2015, Thomas Kluyver.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

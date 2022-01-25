@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flit 3.6.0 &mdash; Flit 3.6.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="pyproject.toml 配置文件" href="pyproject_toml.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> Flit
+          </a>
+              <div class="version">
+                3.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="pyproject_toml.html">pyproject.toml 配置文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload.html">Controlling package uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducible.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why use Flit?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Release history</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Flit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Flit 3.6.0</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flit-version">
+<h1>Flit 3.6.0<a class="headerlink" href="#flit-version" title="永久链接至标题"></a></h1>
+<img src="_static/flit_logo_nobg_cropped.svg" width="200px" style="float: right"/><p><strong>Flit</strong> 是一种将 Python 包和模块放在 PyPI 上的简单方法。它试图让你在打包时少花心思，并帮助你避免常见的错误。参见 <a class="reference external" href="https://flit.readthedocs.io/en/latest/rationale.html">为什么使用 Flit?</a> 了解更多关于它与其他 Python 打包工具的比较。</p>
+<section id="install">
+<h2>安装<a class="headerlink" href="#install" title="永久链接至标题"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install flit
+</pre></div>
+</div>
+<p>Flit 需要 Python 3，因此需要使用 Python 3 版本的 pip 进行安装。</p>
+<p>Python 2 模块可以使用 Flit 发布，但需要在 Python 3 上可以无误导入。</p>
+</section>
+<section id="usage">
+<h2>用法<a class="headerlink" href="#usage" title="永久链接至标题"></a></h2>
+<p>假设你正在编写一个模块 <code class="docutils literal notranslate"><span class="pre">foobar</span></code> – 可以是一个单独的文件 <code class="docutils literal notranslate"><span class="pre">foobar.py</span></code>，也可以是一个目录 – 你想分发它。</p>
+<ol class="arabic">
+<li><p>确保 foobar 的文档字符串以一行摘要开始，说明该模块是什么，并有一个 <code class="docutils literal notranslate"><span class="pre">__version__</span></code>：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;An amazing sample package!&quot;&quot;&quot;</span>
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.1&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>如果你还没有安装 flit，请安装</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">flit</span>
+</pre></div>
+</div>
+</li>
+<li><p>在包含该模块的目录中运行 <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code>，创建一个 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> 文件。它将看起来像这样：</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[build-system]</span><span class="w"></span>
+<span class="na">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&quot;flit_core &gt;=3.2,&lt;4&quot;]</span><span class="w"></span>
+<span class="na">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;flit_core.buildapi&quot;</span><span class="w"></span>
+
+<span class="k">[project]</span><span class="w"></span>
+<span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;foobar&quot;</span><span class="w"></span>
+<span class="na">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[{name = &quot;Sir Robin&quot;, email = &quot;robin@camelot.uk&quot;}]</span><span class="w"></span>
+<span class="na">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[&quot;version&quot;, &quot;description&quot;]</span><span class="w"></span>
+
+<span class="k">[project.urls]</span><span class="w"></span>
+<span class="na">Home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://github.com/sirrobin/foobar&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>你可以编辑这个文件来添加其他元数据，例如，设置命令行脚本。见文档中的 <a class="reference external" href="https://flit.readthedocs.io/en/latest/pyproject_toml.html#scripts-section">pyproject.toml 页</a>。</p>
+<p>如果你已经有一个 <code class="docutils literal notranslate"><span class="pre">flit.ini</span></code> 文件用于旧版本的 Flit，通过运行 <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">flit.tomlify</span></code> 将其转换为 <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>。</p>
+</li>
+<li><p>运行此命令将你的代码上传到 PyPI</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flit</span> <span class="n">publish</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>一旦你的软件包发布了，人们就可以像其他软件包一样使用 <em>pip</em> 来安装它。在大多数情况下，pip 会下载一个 ‘wheel’ 包，一个它知道如何安装的标准格式。如果你特别要求 pip 安装一个 ‘sdist’ 包，它将在一个临时环境中安装和使用 Flit。</p>
+<p>要在本地安装用于开发的软件包，运行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flit</span> <span class="n">install</span> <span class="p">[</span><span class="o">--</span><span class="n">symlink</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">python</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">python</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Flit 一次打包一个可导入的模块或包，使用导入名称作为 PyPI 上的名称。一个包内的所有子包和数据文件都会被自动包含。</p>
+</section>
+<section id="documentation-contents">
+<h2>文档目录<a class="headerlink" href="#documentation-contents" title="永久链接至标题"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyproject_toml.html">pyproject.toml 配置文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyproject_toml.html#build-system-section">建设系统部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyproject_toml.html#new-style-metadata">新风格的元数据</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyproject_toml.html#old-style-metadata">Old style metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyproject_toml.html#sdist-section">Sdist 部分</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cmdline.html#common-options">Common options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmdline.html#flit-build"><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">build</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmdline.html#flit-publish"><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">publish</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmdline.html#flit-install"><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmdline.html#flit-init"><code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">init</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmdline.html#environment-variables">Environment variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upload.html">Controlling package uploads</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upload.html#using-pypirc">Using .pypirc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upload.html#using-environment-variables">Using environment variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reproducible.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why use Flit?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#other-options">Other options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Release history</a></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>索引和表格<a class="headerlink" href="#indices-and-tables" title="永久链接至标题"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pyproject_toml.html" class="btn btn-neutral float-right" title="pyproject.toml 配置文件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2015, Thomas Kluyver.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

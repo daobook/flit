@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootstrapping &mdash; Flit 3.6.0 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Developing Flit" href="development.html" />
+    <link rel="prev" title="Why use Flit?" href="rationale.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Flit
+          </a>
+              <div class="version">
+                3.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pyproject_toml.html">pyproject.toml 配置文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload.html">Controlling package uploads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducible.html">Reproducible builds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why use Flit?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bootstrapping</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">Release history</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Flit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Bootstrapping</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/bootstrap.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bootstrapping">
+<h1>Bootstrapping<a class="headerlink" href="#bootstrapping" title="永久链接至标题"></a></h1>
+<p>Flit is itself packaged using Flit, as are some foundational packaging tools
+such as <code class="docutils literal notranslate"><span class="pre">pep517</span></code>. So where can you start if you need to install everything
+from source?</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>For most users, <code class="docutils literal notranslate"><span class="pre">pip</span></code> handles all this automatically. You should only need
+to deal with this if you’re building things entirely from scratch, such as
+putting Python packages into another package format.</p>
+</div>
+<p>The key piece is <code class="docutils literal notranslate"><span class="pre">flit_core</span></code>. This is a package which can build itself using
+nothing except Python and the standard library. From an unpacked source archive,
+you can run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">build_dists.py</span></code>, of which the crucial part is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flit_core</span> <span class="kn">import</span> <span class="n">buildapi</span>
+<span class="n">whl_fname</span> <span class="o">=</span> <span class="n">buildapi</span><span class="o">.</span><span class="n">build_wheel</span><span class="p">(</span><span class="s1">&#39;dist/&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;dist&#39;</span><span class="p">,</span> <span class="n">whl_fname</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This produces a <code class="docutils literal notranslate"><span class="pre">.whl</span></code> wheel file, which you can unzip into your
+<code class="docutils literal notranslate"><span class="pre">site-packages</span></code> folder (or equivalent) to make <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> available for
+building other packages. (You could also just copy <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> from the
+source directory, but without the <code class="docutils literal notranslate"><span class="pre">.dist-info</span></code> folder, tools like pip won’t
+know that it’s installed.)</p>
+<p>As of version 3.6, flit_core bundles the <code class="docutils literal notranslate"><span class="pre">tomli</span></code> TOML parser, to avoid a
+dependency cycle. If you need to unbundle it, you will need to special-case
+installing flit_core and/or tomli to get around that cycle.</p>
+<p>I recommend that you get the <a class="reference external" href="https://pypi.org/project/build/">build</a> and
+<a class="reference external" href="https://pypi.org/project/installer/">installer</a> packages (and their
+dependencies) installed as the goal of the bootstrapping phase. These tools
+together can be used to install any other Python packages: <code class="docutils literal notranslate"><span class="pre">build</span></code> to create
+wheels and <code class="docutils literal notranslate"><span class="pre">installer</span></code> to install them.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rationale.html" class="btn btn-neutral float-left" title="Why use Flit?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="development.html" class="btn btn-neutral float-right" title="Developing Flit" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2015, Thomas Kluyver.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
