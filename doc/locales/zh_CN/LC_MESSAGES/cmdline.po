@@ -1,0 +1,278 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015, Thomas Kluyver
+# This file is distributed under the same license as the Flit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flit 3.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-25 13:21+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../cmdline.rst:2
+msgid "Flit command line interface"
+msgstr ""
+
+#: ../../cmdline.rst:4
+msgid ""
+"All operations use the ``flit`` command, followed by one of a number of "
+"subcommands."
+msgstr ""
+
+#: ../../cmdline.rst:8
+msgid "Common options"
+msgstr ""
+
+#: ../../cmdline.rst:14
+msgid ""
+"Path to a config file specifying the module to build. The default is "
+"``pyproject.toml``."
+msgstr ""
+
+#: ../../cmdline.rst:19
+msgid "Show the version of Flit in use."
+msgstr ""
+
+#: ../../cmdline.rst:23
+msgid "Show help on the command-line interface."
+msgstr ""
+
+#: ../../cmdline.rst:27
+msgid "Show more detailed logs about what flit is doing."
+msgstr ""
+
+#: ../../cmdline.rst:32
+msgid "``flit build``"
+msgstr ""
+
+#: ../../cmdline.rst:36
+msgid "Build a wheel and an sdist (tarball) from the package."
+msgstr ""
+
+#: ../../cmdline.rst:40
+msgid "Limit to building either ``wheel`` or ``sdist``."
+msgstr ""
+
+#: ../../cmdline.rst:44 ../../cmdline.rst:74
+msgid ""
+"Generate a ``setup.py`` file in the sdist, so it can be installed by "
+"older versions of pip."
+msgstr ""
+
+#: ../../cmdline.rst:49 ../../cmdline.rst:79
+msgid ""
+"Don't generate a setup.py file in the sdist. This is the default. An "
+"sdist built without this will only work with tools that support PEP 517, "
+"but the wheel will still be usable by any compatible tool."
+msgstr ""
+
+#: ../../cmdline.rst:55 ../../cmdline.rst:85
+msgid "Generating ``setup.py`` disabled by default."
+msgstr ""
+
+#: ../../cmdline.rst:60
+msgid "``flit publish``"
+msgstr ""
+
+#: ../../cmdline.rst:64
+msgid ""
+"Build a wheel and an sdist (tarball) from the package, and upload them to"
+" PyPI or another repository."
+msgstr ""
+
+#: ../../cmdline.rst:69
+msgid ""
+"Limit to publishing either ``wheel`` or ``sdist``. You should normally "
+"publish the two formats together."
+msgstr ""
+
+#: ../../cmdline.rst:89
+msgid ""
+"Name of a repository to upload packages to. Should match a section in "
+"``~/.pypirc``. The default is ``pypi``."
+msgstr ""
+
+#: ../../cmdline.rst:94
+msgid "The .pypirc config file to be used. The default is ``~/.pypirc``."
+msgstr ""
+
+#: ../../cmdline.rst:96
+msgid ":doc:`upload`"
+msgstr ""
+
+#: ../../cmdline.rst:101
+msgid "``flit install``"
+msgstr ""
+
+#: ../../cmdline.rst:105
+msgid "Install the package on your system."
+msgstr ""
+
+#: ../../cmdline.rst:107
+msgid ""
+"By default, the package is installed to the same Python environment that "
+"Flit itself is installed in; use :option:`--python` or "
+":envvar:`FLIT_INSTALL_PYTHON` to override this."
+msgstr ""
+
+#: ../../cmdline.rst:111
+msgid ""
+"If you don't have permission to modify the environment (e.g. the system "
+"Python on Linux), Flit may do a user install instead. Use the "
+":option:`--user` or :option:`--env` flags to force this one way or the "
+"other, rather than letting Flit guess."
+msgstr ""
+
+#: ../../cmdline.rst:118
+msgid ""
+"Symlink the module into site-packages rather than copying it, so that you"
+" can test changes without reinstalling the module."
+msgstr ""
+
+#: ../../cmdline.rst:123
+msgid ""
+"Create a ``.pth`` file in site-packages rather than copying the module, "
+"so you can test changes without reinstalling. This is a less elegant "
+"alternative to ``--symlink``, but it works on Windows, which typically "
+"doesn't allow symlinks."
+msgstr ""
+
+#: ../../cmdline.rst:130
+msgid ""
+"Which dependencies to install. One of ``all``, ``production``, "
+"``develop``, or ``none``. ``all`` and ``develop`` install the extras "
+"``test``, ``doc``, and ``dev``. Default ``all``."
+msgstr ""
+
+#: ../../cmdline.rst:136
+msgid ""
+"Which named extra features to install dependencies for. Specify ``all`` "
+"to install all optional dependencies, or a comma-separated list of "
+"extras. Default depends on ``--deps``."
+msgstr ""
+
+#: ../../cmdline.rst:142
+msgid ""
+"Do a user-local installation. This is the default if flit is not in a "
+"virtualenv or conda env (if the environment's library directory is read-"
+"only and ``site.ENABLE_USER_SITE`` is true)."
+msgstr ""
+
+#: ../../cmdline.rst:148
+msgid ""
+"Install into the environment - the opposite of :option:`--user`. This is "
+"the default in a virtualenv or conda env (if the environment's library "
+"directory is writable or ``site.ENABLE_USER_SITE`` is false)."
+msgstr ""
+
+#: ../../cmdline.rst:154
+msgid ""
+"Install for another Python, identified by the path of the python "
+"executable. Using this option, you can install a module for Python 2, for"
+" instance. See :envvar:`FLIT_INSTALL_PYTHON` if this option is not given."
+msgstr ""
+
+#: ../../cmdline.rst:158
+msgid ""
+"Added :envvar:`FLIT_INSTALL_PYTHON` and use its value over the Python "
+"running Flit when an explicit :option:`--python` option is not given."
+msgstr ""
+
+#: ../../cmdline.rst:164
+msgid ""
+"Flit calls pip to do the installation. You can set any of pip's options "
+"`using its environment variables "
+"<https://pip.pypa.io/en/stable/user_guide/#environment-variables>`__."
+msgstr ""
+
+#: ../../cmdline.rst:168
+msgid ""
+"When you use the :option:`--symlink` or :option:`--pth-file` options, pip"
+" is used to install dependencies. Otherwise, Flit builds a wheel and then"
+" calls pip to install that."
+msgstr ""
+
+#: ../../cmdline.rst:175
+msgid "``flit init``"
+msgstr ""
+
+#: ../../cmdline.rst:179
+msgid ""
+"Create a new ``pyproject.toml``  config file by prompting for information"
+" about the module in the current directory."
+msgstr ""
+
+#: ../../cmdline.rst:183
+msgid "Environment variables"
+msgstr ""
+
+#: ../../cmdline.rst:189
+msgid ""
+"Setting this to any non-empty value will stop flit from making network "
+"connections (unless you explicitly ask to upload a package). This is "
+"intended for downstream packagers, so if you use this, it's up to you to "
+"ensure any necessary dependencies are installed."
+msgstr ""
+
+#: ../../cmdline.rst:196
+msgid ""
+"By default, ``flit install`` will fail when run as root on POSIX systems,"
+" because installing Python modules systemwide is not recommended. Setting"
+" this to any non-empty value allows installation as root. It has no "
+"effect on Windows."
+msgstr ""
+
+#: ../../cmdline.rst:207
+msgid ""
+"Set a username, password, and index URL for uploading packages. See "
+":ref:`uploading packages with environment variables <upload_envvars>` for"
+" more information."
+msgstr ""
+
+#: ../../cmdline.rst:215
+msgid ""
+"Setting this to any non-empty value tells Flit to continue if it detects "
+"invalid metadata, instead of failing with an error. Problems will still "
+"be reported in the logs, but won't cause Flit to stop."
+msgstr ""
+
+#: ../../cmdline.rst:219
+msgid ""
+"If the metadata is invalid, uploading the package to PyPI may fail. This "
+"environment variable provides an escape hatch in case Flit incorrectly "
+"rejects your valid metadata. If you need to use it and you believe your "
+"metadata is valid, please `open an issue "
+"<https://github.com/pypa/flit/issues>`__."
+msgstr ""
+
+#: ../../cmdline.rst:230
+msgid ""
+"Set a default Python interpreter for :ref:`install_cmd` to use when "
+":option:`--python` is not specified. The value can be either an absolute "
+"path, or a command name (which will be found in ``PATH``). If this is "
+"unset or empty, the module is installed for the copy of Python that is "
+"running Flit."
+msgstr ""
+
+#: ../../cmdline.rst:238
+msgid ""
+"To make reproducible builds, set this to a timestamp as a number of "
+"seconds since the start of the year 1970 in UTC, and document the value "
+"you used. On Unix systems, you can get a value for the current time by "
+"running::"
+msgstr ""
+
+#: ../../cmdline.rst:247
+msgid ""
+"`The SOURCE_DATE_EPOCH specification <https://reproducible-"
+"builds.org/specs/source-date-epoch/>`__"
+msgstr ""
+

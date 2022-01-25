@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015, Thomas Kluyver
+# This file is distributed under the same license as the Flit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flit 3.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-25 13:21+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../index.rst:2
+msgid "Flit |version|"
+msgstr ""
+
+#: ../../../README.rst:1
+msgid ""
+"**Flit** is a simple way to put Python packages and modules on PyPI. It "
+"tries to require less thought about packaging and help you avoid common "
+"mistakes. See `Why use Flit? "
+"<https://flit.readthedocs.io/en/latest/rationale.html>`_ for more about "
+"how it compares to other Python packaging tools."
+msgstr ""
+"**Flit** 是一种将 Python 包和模块放在 PyPI 上的简单方法。"
+"它试图让你在打包时少花心思，并帮助你避免常见的错误。"
+"参见 `为什么使用 Flit?  <https://flit.readthedocs.io/en/latest/rationale.html>`_ 了解更多关于它与其他 Python 打包工具的比较。"
+
+#: ../../../README.rst:8
+msgid "Install"
+msgstr "安装"
+
+#: ../../../README.rst:14
+msgid ""
+"Flit requires Python 3 and therefore needs to be installed using the "
+"Python 3 version of pip."
+msgstr ""
+"Flit 需要 Python 3，因此需要使用 Python 3 版本的 pip 进行安装。"
+
+#: ../../../README.rst:17
+msgid ""
+"Python 2 modules can be distributed using Flit, but need to be importable"
+" on Python 3 without errors."
+msgstr ""
+"Python 2 模块可以使用 Flit 发布，但需要在 Python 3 上可以无误导入。"
+
+#: ../../../README.rst:21
+msgid "Usage"
+msgstr "用法"
+
+#: ../../../README.rst:23
+msgid ""
+"Say you're writing a module ``foobar`` — either as a single file "
+"``foobar.py``, or as a directory — and you want to distribute it."
+msgstr ""
+"假设你正在编写一个模块 ``foobar`` -- 可以是一个单独的文件 ``foobar.py``，也可以是一个目录 -- 你想分发它。"
+
+#: ../../../README.rst:26
+msgid ""
+"Make sure that foobar's docstring starts with a one-line summary of what "
+"the module is, and that it has a ``__version__``:"
+msgstr ""
+"确保 foobar 的文档字符串以一行摘要开始，说明该模块是什么，并有一个 ``__version__``："
+
+#: ../../../README.rst:35
+msgid "Install flit if you don't already have it::"
+msgstr "如果你还没有安装 flit，请安装 ::"
+
+#: ../../../README.rst:39
+msgid ""
+"Run ``flit init`` in the directory containing the module to create a "
+"``pyproject.toml`` file. It will look something like this:"
+msgstr ""
+"在包含该模块的目录中运行 ``flit init``，创建一个 ``pyproject.toml`` 文件。它将看起来像这样："
+
+#: ../../../README.rst:56
+msgid ""
+"You can edit this file to add other metadata, for example to set up "
+"command line scripts. See the `pyproject.toml page "
+"<https://flit.readthedocs.io/en/latest/pyproject_toml.html#scripts-"
+"section>`_ of the documentation."
+msgstr ""
+"你可以编辑这个文件来添加其他元数据，例如，设置命令行脚本。"
+"见文档中的 `pyproject.toml 页 <https://flit.readthedocs.io/en/latest/pyproject_toml.html#scripts-section>`_。"
+
+#: ../../../README.rst:61
+msgid ""
+"If you have already got a ``flit.ini`` file to use with older versions of"
+" Flit, convert it to ``pyproject.toml`` by running ``python3 -m "
+"flit.tomlify``."
+msgstr ""
+"如果你已经有一个 ``flit.ini`` 文件用于旧版本的 Flit，"
+"通过运行 ``python3 -m flit.tomlify`` 将其转换为 ``pyproject.toml``。"
+
+#: ../../../README.rst:64
+msgid "Run this command to upload your code to PyPI::"
+msgstr "运行此命令将你的代码上传到 PyPI ::"
+
+#: ../../../README.rst:68
+msgid ""
+"Once your package is published, people can install it using *pip* just "
+"like any other package. In most cases, pip will download a 'wheel' "
+"package, a standard format it knows how to install. If you specifically "
+"ask pip to install an 'sdist' package, it will install and use Flit in a "
+"temporary environment."
+msgstr ""
+"一旦你的软件包发布了，人们就可以像其他软件包一样使用 *pip* 来安装它。"
+"在大多数情况下，pip 会下载一个 'wheel' 包，一个它知道如何安装的标准格式。"
+"如果你特别要求 pip 安装一个 'sdist' 包，它将在一个临时环境中安装和使用 Flit。"
+
+#: ../../../README.rst:74
+msgid "To install a package locally for development, run::"
+msgstr "要在本地安装用于开发的软件包，运行 ::"
+
+#: ../../../README.rst:78
+msgid ""
+"Flit packages a single importable module or package at a time, using the "
+"import name as the name on PyPI. All subpackages and data files within a "
+"package are included automatically."
+msgstr ""
+"Flit 一次打包一个可导入的模块或包，使用导入名称作为 PyPI 上的名称。"
+"一个包内的所有子包和数据文件都会被自动包含。"
+
+#: ../../index.rst:11
+msgid "Documentation contents"
+msgstr "文档目录"
+
+#: ../../index.rst:30
+msgid "Indices and tables"
+msgstr "索引和表格"
+
+#: ../../index.rst:32
+msgid ":ref:`genindex`"
+msgstr ""
+
+#: ../../index.rst:33
+msgid ":ref:`search`"
+msgstr ""
+

@@ -1,0 +1,1028 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015, Thomas Kluyver
+# This file is distributed under the same license as the Flit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flit 3.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-25 13:21+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../history.rst:2
+msgid "Release history"
+msgstr ""
+
+#: ../../history.rst:5
+msgid "Version 3.6"
+msgstr ""
+
+#: ../../history.rst:7
+msgid ""
+"``flit_core`` now bundles the `tomli <https://pypi.org/project/tomli/>`_ "
+"TOML parser library (version 1.2.3) to avoid a circular dependency "
+"between ``flit_core`` and ``tomli`` (:ghpull:`492`). This means "
+"``flit_core`` now has no dependencies except Python itself, both at build"
+" time and at runtime, simplifying :doc:`bootstrapping <bootstrap>`."
+msgstr ""
+
+#: ../../history.rst:14
+msgid "Version 3.5.1"
+msgstr ""
+
+#: ../../history.rst:16
+msgid ""
+"Fix development installs with ``flit install --symlink`` and ``--pth-"
+"file``, which were broken in 3.5.0, especially for packages using a "
+"``src`` folder (:ghpull:`472`)."
+msgstr ""
+
+#: ../../history.rst:21
+msgid "Version 3.5"
+msgstr ""
+
+#: ../../history.rst:23
+msgid ""
+"You can now use Flit to distribute a module or package inside a namespace"
+" package (as defined by :pep:`420`). To do this, specify the import name "
+"of the concrete, inner module you are packaging - e.g. ``name = "
+"\"sphinxcontrib.foo\"`` - either in the ``[project]`` table, or under "
+"``[tool.flit.module]`` if you want to use a different name on PyPI "
+"(:ghpull:`468`)."
+msgstr ""
+
+#: ../../history.rst:28
+msgid ""
+"Flit no longer generates a ``setup.py`` file in sdists (``.tar.gz`` "
+"packages) by default (:ghpull:`462`). Modern packaging tools don't need "
+"this. You can use the ``--setup-py`` flag to keep adding it for now, but "
+"this will probably be removed at some point in the future."
+msgstr ""
+
+#: ../../history.rst:32
+msgid ""
+"Fixed how ``flit init`` handles authors' names with non-ASCII characters "
+"(:ghpull:`460`)."
+msgstr ""
+
+#: ../../history.rst:34
+msgid ""
+"When ``flit init`` generates a LICENSE file, the new ``pyproject.toml`` "
+"now references it (:ghpull:`467`)."
+msgstr ""
+
+#: ../../history.rst:38
+msgid "Version 3.4"
+msgstr ""
+
+#: ../../history.rst:40
+msgid "Python 3.6 or above is now required, both for ``flit`` and ``flit_core``."
+msgstr ""
+
+#: ../../history.rst:41
+msgid ""
+"Add a ``--setup-py`` option to ``flit build`` and ``flit publish``, and a"
+" warning when neither this nor ``--no-setup-py`` are specified "
+"(:ghpull:`431`). A future version will stop generating ``setup.py`` files"
+" in sdists by default."
+msgstr ""
+
+#: ../../history.rst:44
+msgid ""
+"Add support for standardised editable installs - ``pip install -e`` - "
+"according to :pep:`660` (:ghpull:`400`)."
+msgstr ""
+
+#: ../../history.rst:46
+msgid ""
+"Add a ``--pypirc`` option for ``flit publish`` to specify an alternative "
+"path to a ``.pypirc`` config file describing package indexes "
+"(:ghpull:`434`)."
+msgstr ""
+
+#: ../../history.rst:48
+msgid ""
+"Fix installing dependencies specified in a ``[project]`` table "
+"(:ghpull:`433`)."
+msgstr ""
+
+#: ../../history.rst:49
+msgid ""
+"Fix building wheels when ``SOURCE_DATE_EPOCH`` (see :doc:`reproducible`) "
+"is set to a date before 1980 (:ghpull:`448`)."
+msgstr ""
+
+#: ../../history.rst:51
+msgid ""
+"Switch to using the `tomli <https://pypi.org/project/tomli/>`_ TOML "
+"parser, in common with other packaging projects (:ghpull:`438`). This "
+"supports TOML version 1.0."
+msgstr ""
+
+#: ../../history.rst:54
+msgid "Add a document on :doc:`bootstrap` (:ghpull:`441`)."
+msgstr ""
+
+#: ../../history.rst:57
+msgid "Version 3.3"
+msgstr ""
+
+#: ../../history.rst:59
+msgid ""
+"``PKG-INFO`` files in sdists are now generated the same way as "
+"``METADATA`` in wheels, fixing some issues with sdists (:ghpull:`410`)."
+msgstr ""
+
+#: ../../history.rst:61
+msgid ""
+"``flit publish`` now sends SHA-256 hashes, fixing uploads to GitLab "
+"package repositories (:ghpull:`416`)."
+msgstr ""
+
+#: ../../history.rst:63
+msgid ""
+"The ``[project]`` metadata table from :pep:`621` is now fully supported "
+"and :ref:`documented <pyproject_toml_project>`. Projects using this can "
+"now specify ``requires = [\"flit_core >=3.2,<4\"]`` in the ``[build-"
+"system]`` table."
+msgstr ""
+
+#: ../../history.rst:68
+msgid "Version 3.2"
+msgstr ""
+
+#: ../../history.rst:70
+msgid ""
+"Experimental support for specifying metadata in a ``[project]`` table in "
+"``pyproject.toml`` as specified by :pep:`621` (:ghpull:`393`). If you try"
+" using this, please specify ``requires = [\"flit_core >=3.2.0,<3.3\"]`` "
+"in the ``[build-system]`` table for now, in case it needs to change for "
+"the next release."
+msgstr ""
+
+#: ../../history.rst:75
+msgid ""
+"Fix writing METADATA file with multi-line information in certain fields "
+"such as ``Author`` (:ghpull:`402`)."
+msgstr ""
+
+#: ../../history.rst:77
+msgid ""
+"Fix building wheel when a directory such as LICENSES appears in the "
+"project root directory (:ghpull:`401`)."
+msgstr ""
+
+#: ../../history.rst:81
+msgid "Version 3.1"
+msgstr ""
+
+#: ../../history.rst:83
+msgid ""
+"Update handling of names & version numbers in wheel filenames and "
+"``.dist-info`` folders in line with changes in the specs (:ghpull:`395`)."
+msgstr ""
+
+#: ../../history.rst:85
+msgid "Switch from the deprecated ``pytoml`` package to ``toml`` (:ghpull:`378`)."
+msgstr ""
+
+#: ../../history.rst:86
+msgid ""
+"Fix specifying backend-path in ``pyproject.toml`` for flit-core (as a "
+"list instead of a string)."
+msgstr ""
+
+#: ../../history.rst:90
+msgid "Version 3.0"
+msgstr ""
+
+#: ../../history.rst:92
+msgid "Breaking changes:"
+msgstr ""
+
+#: ../../history.rst:94
+msgid ""
+"Projects must now provide Flit with information in ``pyproject.toml`` "
+"files, not the older ``flit.ini`` format (:ghpull:`338`)."
+msgstr ""
+
+#: ../../history.rst:96
+msgid ""
+"``flit_core`` once again requires Python 3 (>=3.4). Packages that support"
+" Python 2 can still be built by ``flit_core`` 2.x, but can't rely on new "
+"features (:ghpull:`342`)."
+msgstr ""
+
+#: ../../history.rst:99
+msgid ""
+"The deprecated ``flit installfrom`` command was removed (:ghpull:`334`). "
+"You can use ``pip install git+https://github.com/...`` instead."
+msgstr ""
+
+#: ../../history.rst:102
+msgid "Features and fixes:"
+msgstr ""
+
+#: ../../history.rst:104
+msgid ""
+"Fix building sdists from a git repository with non-ASCII characters in "
+"filenames (:ghpull:`346`)."
+msgstr ""
+
+#: ../../history.rst:106
+msgid ""
+"Fix identifying the version number when the code contains a subscript "
+"assignment before ``__version__ =`` (:ghpull:`348`)."
+msgstr ""
+
+#: ../../history.rst:108
+msgid "Script entry points can now use a class method (:ghpull:`359`)."
+msgstr ""
+
+#: ../../history.rst:109
+msgid "Set suitable permission bits on metadata files in wheels (:ghpull:`256`)."
+msgstr ""
+
+#: ../../history.rst:110
+msgid ""
+"Fixed line endings in the ``RECORD`` file when installing on Windows "
+"(:ghpull:`368`)."
+msgstr ""
+
+#: ../../history.rst:112
+msgid ""
+"Support for recording the source of local installations, as in :pep:`610`"
+" (:ghpull:`335`)."
+msgstr ""
+
+#: ../../history.rst:114
+msgid ""
+"``flit init`` will check for a README in the root of the project and "
+"automatically set it as ``description-file`` (:ghpull:`337`)."
+msgstr ""
+
+#: ../../history.rst:116
+msgid ""
+"Pygments is not required for checking reStructuredText READMEs "
+"(:ghpull:`357`)."
+msgstr ""
+
+#: ../../history.rst:117
+msgid ""
+"Packages where the version number can be recognised without executing "
+"their code don't need their dependencies installed to build, which should"
+" make them build faster (:ghpull:`361`)."
+msgstr ""
+
+#: ../../history.rst:120
+msgid ""
+"Ensure the installed ``RECORD`` file is predictably ordered "
+"(:ghpull:`366`)."
+msgstr ""
+
+#: ../../history.rst:123
+msgid "Version 2.3"
+msgstr ""
+
+#: ../../history.rst:125
+msgid ""
+"New projects created with :ref:`init_cmd` now declare that they require "
+"``flit_core >=2,<4`` (:ghpull:`328`). Any projects using "
+"``pyproject.toml`` (not ``flit.ini``) should be compatible with flit 3.x."
+msgstr ""
+
+#: ../../history.rst:128
+msgid ""
+"Fix selecting files from a git submodule to include in an sdist "
+"(:ghpull:`324`)."
+msgstr ""
+
+#: ../../history.rst:130
+msgid ""
+"Fix checking classifiers when no writeable cache directory is available "
+"(:ghpull:`319`)."
+msgstr ""
+
+#: ../../history.rst:132
+msgid ""
+"Better errors when trying to install to a mis-spelled or missing Python "
+"interpreter (:ghpull:`331`)."
+msgstr ""
+
+#: ../../history.rst:134
+msgid ""
+"Fix specifying ``--repository`` before ``upload`` (:ghpull:`322`). "
+"Passing the option like this is deprecated, and you should now pass it "
+"after ``upload``."
+msgstr ""
+
+#: ../../history.rst:136
+msgid "Documentation improvements (:ghpull:`327`, :ghpull:`318`, :ghpull:`314`)"
+msgstr ""
+
+#: ../../history.rst:139
+msgid "Version 2.2"
+msgstr ""
+
+#: ../../history.rst:141
+msgid "Allow underscores in package names with Python 2 (:ghpull:`305`)."
+msgstr ""
+
+#: ../../history.rst:142
+msgid ""
+"Add a ``--no-setup-py`` option to build sdists without a backwards-"
+"compatible ``setup.py`` file (:ghpull:`311`)."
+msgstr ""
+
+#: ../../history.rst:144
+msgid ""
+"Fix the generated ``setup.py`` file for packages using a ``src/`` layout "
+"(:ghpull:`303`)."
+msgstr ""
+
+#: ../../history.rst:146
+msgid ""
+"Fix detecting when more than one file matches the module name specified "
+"(:ghpull:`307`)."
+msgstr ""
+
+#: ../../history.rst:148
+msgid ""
+"Fix installing to a venv on Windows with the ``--python`` option "
+"(:ghpull:`300`)."
+msgstr ""
+
+#: ../../history.rst:150
+msgid ""
+"Don't echo the command in scripts installed with ``--symlink`` or "
+"``--pth-file`` on Windows (:ghpull:`310`)."
+msgstr ""
+
+#: ../../history.rst:152
+msgid ""
+"New ``bootstrap_dev.py`` script to set up a development installation of "
+"Flit from the repository (:ghpull:`301`, :ghpull:`306`)."
+msgstr ""
+
+#: ../../history.rst:156
+msgid "Version 2.1"
+msgstr ""
+
+#: ../../history.rst:158
+msgid "Use compression when adding files to wheels."
+msgstr ""
+
+#: ../../history.rst:159
+msgid ""
+"Added the :envvar:`FLIT_INSTALL_PYTHON` environment variable "
+"(:ghpull:`295`), to configure flit to always install into a Python other "
+"than the one it's running on."
+msgstr ""
+
+#: ../../history.rst:162
+msgid ""
+"``flit_core`` uses the ``intreehooks`` shim package to load its "
+"bootstrapping backend, until a released version of pip supports the "
+"standard ``backend-path`` mechanism."
+msgstr ""
+
+#: ../../history.rst:167
+msgid "Version 2.0"
+msgstr ""
+
+#: ../../history.rst:169
+msgid ""
+"Flit 2 is a major architecture change. The ``flit_core`` package now "
+"provides a :pep:`517` backend for building packages, while ``flit`` is a "
+":doc:`command line interface <cmdline>` extending that."
+msgstr ""
+
+#: ../../history.rst:173
+msgid ""
+"The build backend works on Python 2, so tools like pip should be able to "
+"install packages built with flit from source on Python 2. The ``flit`` "
+"command requires Python 3.5 or above. You will need to change the build-"
+"system table in your ``pyproject.toml`` file to look like this:"
+msgstr ""
+
+#: ../../history.rst:185
+msgid "Other changes include:"
+msgstr ""
+
+#: ../../history.rst:187
+msgid ""
+"Support for storing your code under a ``src/`` folder (:ghpull:`260`). "
+"You don't need to change any configuration if you do this."
+msgstr ""
+
+#: ../../history.rst:189
+msgid ""
+"Options to control what files are included in an sdist - see "
+":ref:`pyproject_toml_sdist` for the details."
+msgstr ""
+
+#: ../../history.rst:191
+msgid ""
+"Requirements can specify a URL 'direct reference', as an alternative to a"
+" version number, with the syntax defined in :pep:`440`: ``requests @ "
+"https://example.com/requests-2.22.0.tar.gz``."
+msgstr ""
+
+#: ../../history.rst:194
+msgid ""
+"Fix the shebang of scripts installed with the ``--python`` option and the"
+" ``--symlink`` flag (:ghpull:`286`)."
+msgstr ""
+
+#: ../../history.rst:196
+msgid ""
+"Installing with ``--deps develop`` now installs normal dependencies as "
+"well as development dependencies."
+msgstr ""
+
+#: ../../history.rst:198
+msgid "Author email is no longer required in the metadata table (:ghpull:`289`)."
+msgstr ""
+
+#: ../../history.rst:199
+msgid "More error messages are now shown without a traceback (:ghpull:`254`)"
+msgstr ""
+
+#: ../../history.rst:202
+msgid "Version 1.3"
+msgstr ""
+
+#: ../../history.rst:204
+msgid ""
+"Fix for building sdists from a subdirectory in a Mercurial repository "
+"(:ghpull:`233`)."
+msgstr ""
+
+#: ../../history.rst:206
+msgid ""
+"Fix for getting the docstring and version from modules defining their "
+"encoding (:ghpull:`239`)."
+msgstr ""
+
+#: ../../history.rst:208
+msgid "Fix for installing packages with ``flit installfrom`` (:ghpull:`221`)."
+msgstr ""
+
+#: ../../history.rst:209
+msgid ""
+"Packages with requirements no longer get a spurious ``Provides-Extra: "
+".none`` metadata entry (:ghissue:`228`)."
+msgstr ""
+
+#: ../../history.rst:211
+msgid ""
+"Better check of whether ``python-requires`` includes any Python 2 version"
+" (:ghpull:`232`)."
+msgstr ""
+
+#: ../../history.rst:213
+msgid "Better check of home page URLs in ``flit init`` (:ghpull:`230`)."
+msgstr ""
+
+#: ../../history.rst:214
+msgid ""
+"Better error message when the description file is not found "
+"(:ghpull:`234`)."
+msgstr ""
+
+#: ../../history.rst:215
+msgid "Updated a help message to refer to ``pyproject.toml`` (:ghpull:`240`)."
+msgstr ""
+
+#: ../../history.rst:216
+msgid "Improve tests of ``flit init`` (:ghpull:`229`)."
+msgstr ""
+
+#: ../../history.rst:219
+msgid "Version 1.2.1"
+msgstr ""
+
+#: ../../history.rst:221
+msgid "Fix for installing packages with ``flit install``."
+msgstr ""
+
+#: ../../history.rst:222
+msgid ""
+"Make ``requests_download`` an extra dependency, to avoid a circular build"
+" dependency. To use ``flit installfrom``, you can install with ``pip "
+"install flit[installfrom]``. Note that the ``installfrom`` subcommand is "
+"deprecated, as it will soon be possible to use pip to install Flit "
+"projects directly from a VCS URL."
+msgstr ""
+
+#: ../../history.rst:229
+msgid "Version 1.2"
+msgstr ""
+
+#: ../../history.rst:231
+msgid ""
+"Fixes for packages specifying ``requires-extra``: sdists should now work,"
+" and environment markers can be used together with ``requires-extra``."
+msgstr ""
+
+#: ../../history.rst:233
+msgid ""
+"Fix running ``flit installfrom`` without a config file present in the "
+"working directory."
+msgstr ""
+
+#: ../../history.rst:235
+msgid ""
+"The error message for a missing or empty docstring tells you what file "
+"the docstring should be in."
+msgstr ""
+
+#: ../../history.rst:237
+msgid "Improvements to documentation on version selectors for requirements."
+msgstr ""
+
+#: ../../history.rst:240
+msgid "Version 1.1"
+msgstr ""
+
+#: ../../history.rst:242
+msgid ""
+"Packages can now have 'extras', specified as ``requires-extra`` in the "
+":doc:`pyproject.toml file <pyproject_toml>`. These are additional "
+"dependencies for optional features."
+msgstr ""
+
+#: ../../history.rst:245
+msgid "The ``home-page`` metadata field is no longer required."
+msgstr ""
+
+#: ../../history.rst:246
+msgid "Additional project URLs are now validated."
+msgstr ""
+
+#: ../../history.rst:247
+msgid "``flit -V`` is now equivalent to ``flit --version``."
+msgstr ""
+
+#: ../../history.rst:248
+msgid "Various improvements to documentation."
+msgstr ""
+
+#: ../../history.rst:251
+msgid "Version 1.0"
+msgstr ""
+
+#: ../../history.rst:253
+msgid ""
+"The description file may now be written in reStructuredText, Markdown or "
+"plain text. The file extension should indicate which of these formats it "
+"is (``.rst``, ``.md`` or ``.txt``). Previously, only reStructuredText was"
+" officially supported."
+msgstr ""
+
+#: ../../history.rst:257
+msgid ""
+"Multiple links (e.g. documentation, bug tracker) can now be specified in "
+"a new :ref:`[tool.flit.metadata.urls] section <pyproject_toml_urls>` of "
+"``pyproject.toml``."
+msgstr ""
+
+#: ../../history.rst:260
+msgid ""
+"Dependencies are now correctly installed to the target Python when you "
+"use the ``--symlink`` or ``--pth-file`` options."
+msgstr ""
+
+#: ../../history.rst:262
+msgid ""
+"Dependencies are only installed to the Python where Flit is running if it"
+" fails to get the docstring and version number without them."
+msgstr ""
+
+#: ../../history.rst:264
+msgid ""
+"The commands deprecated in 0.13—``flit wheel``, ``flit sdist`` and ``flit"
+" register``—have been removed."
+msgstr ""
+
+#: ../../history.rst:267
+msgid ""
+"Although version 1.0 sounds like a milestone, there's nothing that makes "
+"this release especially significant. It doesn't represent a step change "
+"in stability or completeness. Flit has been gradually maturing for some "
+"time, and I chose this point to end the series of 0.x version numbers."
+msgstr ""
+
+#: ../../history.rst:273
+msgid "Version 0.13"
+msgstr ""
+
+#: ../../history.rst:275
+msgid ""
+"Better validation of several metadata fields (``dist-name``, "
+"``requires``, ``requires-python``, ``home-page``), and of the version "
+"number."
+msgstr ""
+
+#: ../../history.rst:277
+msgid ""
+"New :envvar:`FLIT_ALLOW_INVALID` environment variable to ignore "
+"validation failures in case they go wrong."
+msgstr ""
+
+#: ../../history.rst:279
+msgid ""
+"The list of valid classifiers is now fetched from Warehouse "
+"(https://pypi.org), rather than the older https://pypi.python.org site."
+msgstr ""
+
+#: ../../history.rst:281
+msgid ""
+"Deprecated ``flit wheel`` and ``flit sdist`` subcommands: use "
+":ref:`build_cmd`."
+msgstr ""
+
+#: ../../history.rst:283
+msgid ""
+"Deprecated ``flit register``: you can no longer register a package "
+"separately from uploading it."
+msgstr ""
+
+#: ../../history.rst:287
+msgid "Version 0.12.3"
+msgstr ""
+
+#: ../../history.rst:289
+msgid ""
+"Fix building and installing packages with a ``-`` in the distribution "
+"name."
+msgstr ""
+
+#: ../../history.rst:290
+msgid "Fix numbering in README."
+msgstr ""
+
+#: ../../history.rst:293
+msgid "Version 0.12.2"
+msgstr ""
+
+#: ../../history.rst:295
+msgid "New tool to convert ``flit.ini`` to ``pyproject.toml``::"
+msgstr ""
+
+#: ../../history.rst:299
+msgid "Use the PAX tar format for sdists, as specified by PEP 517."
+msgstr ""
+
+#: ../../history.rst:302
+msgid "Version 0.12.1"
+msgstr ""
+
+#: ../../history.rst:304
+msgid "Restore dependency on ``zipfile36`` backport package."
+msgstr ""
+
+#: ../../history.rst:305
+msgid "Add some missing options to documentation of ``flit install`` subcommand."
+msgstr ""
+
+#: ../../history.rst:306
+msgid "Rearrange environment variables in the docs."
+msgstr ""
+
+#: ../../history.rst:309
+msgid "Version 0.12"
+msgstr ""
+
+#: ../../history.rst:311
+msgid ""
+"Switch the config to ``pyproject.toml`` by default instead of "
+"``flit.ini``, and implement the PEP 517 API."
+msgstr ""
+
+#: ../../history.rst:313
+msgid ""
+"A new option ``--pth-file`` allows for development installation on "
+"Windows (where ``--symlink`` usually won't work)."
+msgstr ""
+
+#: ../../history.rst:315
+msgid ""
+"Normalise file permissions in the zip file, making builds more "
+"reproducible across different systems."
+msgstr ""
+
+#: ../../history.rst:317
+msgid ""
+"Sdists (.tar.gz packages) can now also be reproducibly built by setting "
+":envvar:`SOURCE_DATE_EPOCH`."
+msgstr ""
+
+#: ../../history.rst:319
+msgid ""
+"For most modules, Flit can now extract the version number and docstring "
+"without importing it. It will still fall back to importing where getting "
+"these from the AST fails."
+msgstr ""
+
+#: ../../history.rst:322
+msgid ""
+"``flit build`` will build the wheel from the sdist, helping to ensure "
+"that files aren't left out of the sdist."
+msgstr ""
+
+#: ../../history.rst:324
+msgid ""
+"All list fields in the INI file now ignore blank lines (``requires``, "
+"``dev-requires``, ``classifiers``)."
+msgstr ""
+
+#: ../../history.rst:326
+msgid "Fix the path separator in the ``RECORD`` file of a wheel built on Windows."
+msgstr ""
+
+#: ../../history.rst:327
+msgid "Some minor fixes to building reproducible wheels."
+msgstr ""
+
+#: ../../history.rst:328
+msgid "If building a wheel fails, the temporary file created will be cleaned up."
+msgstr ""
+
+#: ../../history.rst:329
+msgid "Various improvements to docs and README."
+msgstr ""
+
+#: ../../history.rst:332
+msgid "Version 0.11.4"
+msgstr ""
+
+#: ../../history.rst:334
+msgid ""
+"Explicitly open various files as UTF-8, rather than relying on locale "
+"encoding."
+msgstr ""
+
+#: ../../history.rst:336
+msgid "Link to docs from README."
+msgstr ""
+
+#: ../../history.rst:337
+msgid ""
+"Better test coverage, and a few minor fixes for problems revealed by "
+"tests."
+msgstr ""
+
+#: ../../history.rst:340
+msgid "Version 0.11.3"
+msgstr ""
+
+#: ../../history.rst:342
+msgid ""
+"Fixed a bug causing failed uploads when the password is entered in the "
+"terminal."
+msgstr ""
+
+#: ../../history.rst:346
+msgid "Version 0.11.2"
+msgstr ""
+
+#: ../../history.rst:348
+msgid "A couple of behaviour changes when uploading to warehouse."
+msgstr ""
+
+#: ../../history.rst:351
+msgid "Version 0.11.1"
+msgstr ""
+
+#: ../../history.rst:353
+msgid ""
+"Fixed a bug when you use flit to build an sdist from a subdirectory "
+"inside a VCS checkout. The VCS is now correctly detected."
+msgstr ""
+
+#: ../../history.rst:355
+msgid ""
+"Fix the rst checker for newer versions of docutils, by upgrading the "
+"bundled copy of readme_renderer."
+msgstr ""
+
+#: ../../history.rst:359
+msgid "Version 0.11"
+msgstr ""
+
+#: ../../history.rst:361
+msgid ""
+"Flit can now build sdists (tarballs) and upload them to PyPI, if your "
+"code is in a git or mercurial repository. There are new commands:"
+msgstr ""
+
+#: ../../history.rst:364
+msgid "``flit build`` builds both a wheel and an sdist."
+msgstr ""
+
+#: ../../history.rst:365
+msgid "``flit publish`` builds and uploads a wheel and an sdist."
+msgstr ""
+
+#: ../../history.rst:367
+msgid "Smarter ways of getting the information needed for upload:"
+msgstr ""
+
+#: ../../history.rst:369
+msgid ""
+"If you have the `keyring <https://github.com/jaraco/keyring>`_ package "
+"installed, flit can use it to store your password, rather than keeping it"
+" in plain text in ``~/.pypirc``."
+msgstr ""
+
+#: ../../history.rst:372
+msgid ""
+"If ``~/.pypirc`` does not already exist, and you are prompted for your "
+"username, flit will write it into that file."
+msgstr ""
+
+#: ../../history.rst:374
+msgid ""
+"You can provide the information as environment variables: "
+":envvar:`FLIT_USERNAME`, :envvar:`FLIT_PASSWORD` and "
+":envvar:`FLIT_INDEX_URL`. Use this to upload packages from a CI service, "
+"for instance."
+msgstr ""
+
+#: ../../history.rst:378
+msgid "Include 'LICENSE' or 'COPYING' files in wheels."
+msgstr ""
+
+#: ../../history.rst:379
+msgid "Fix for ``flit install --symlink`` inside a virtualenv."
+msgstr ""
+
+#: ../../history.rst:383
+msgid "Version 0.10"
+msgstr ""
+
+#: ../../history.rst:385
+msgid ""
+"Downstream packagers can use the :envvar:`FLIT_NO_NETWORK` environment "
+"variable to stop flit downloading data from the network."
+msgstr ""
+
+#: ../../history.rst:389
+msgid "Version 0.9"
+msgstr ""
+
+#: ../../history.rst:391
+msgid ""
+"``flit install`` and ``flit installfrom`` now take an optional "
+"``--python`` argument, with the path to the Python executable you want to"
+" install it for. Using this, you can install modules to Python 2."
+msgstr ""
+
+#: ../../history.rst:394
+msgid ""
+"Installing a module normally (without ``--symlink``) builds a wheel and "
+"uses pip to install it, which should work better in some corner cases."
+msgstr ""
+
+#: ../../history.rst:398
+msgid "Version 0.8"
+msgstr ""
+
+#: ../../history.rst:400
+msgid ""
+"A new ``flit installfrom`` subcommand to install a project from a source "
+"archive, such as from Github."
+msgstr ""
+
+#: ../../history.rst:402
+msgid ""
+":doc:`Reproducible builds <reproducible>` - you can produce byte-for-byte"
+" identical wheels."
+msgstr ""
+
+#: ../../history.rst:404
+msgid ""
+"A warning for non-canonical version numbers according to `PEP 440 "
+"<https://www.python.org/dev/peps/pep-0440/>`__."
+msgstr ""
+
+#: ../../history.rst:406
+msgid "Fix for installing projects on Windows."
+msgstr ""
+
+#: ../../history.rst:407
+msgid "Better error message when module docstring is only whitespace."
+msgstr ""
+
+#: ../../history.rst:410
+msgid "Version 0.7"
+msgstr ""
+
+#: ../../history.rst:412
+msgid ""
+"A new ``dev-requires`` field in the config file for development "
+"requirements, used when doing ``flit install``."
+msgstr ""
+
+#: ../../history.rst:414
+msgid ""
+"Added a ``--deps`` option for ``flit install`` to control which "
+"dependencies are installed."
+msgstr ""
+
+#: ../../history.rst:416
+msgid "Flit can now be invoked with ``python -m flit``."
+msgstr ""
+
+#: ../../history.rst:419
+msgid "Version 0.6"
+msgstr ""
+
+#: ../../history.rst:421
+msgid ""
+"``flit install`` now ensures requirements specified in ``flit.ini`` are "
+"installed, using pip."
+msgstr ""
+
+#: ../../history.rst:423
+msgid ""
+"If you specify a description file, flit now warns you if it's not valid "
+"reStructuredText (since invalid reStructuredText is treated as plain text"
+" on PyPI)."
+msgstr ""
+
+#: ../../history.rst:426
+msgid "Improved the error message for mis-spelled keys in ``flit.ini``."
+msgstr ""
+
+#: ../../history.rst:429
+msgid "Version 0.5"
+msgstr ""
+
+#: ../../history.rst:431
+msgid ""
+"A new ``flit init`` command to quickly define the essential basic "
+"metadata for a package."
+msgstr ""
+
+#: ../../history.rst:433
+msgid "Support for entry points."
+msgstr ""
+
+#: ../../history.rst:434
+msgid ""
+"A new ``flit register`` command to register a package without uploading "
+"it, for when you want to claim a name before you're ready to release."
+msgstr ""
+
+#: ../../history.rst:436
+msgid ""
+"Added a ``--repository`` option for specifying an alternative PyPI "
+"instance."
+msgstr ""
+
+#: ../../history.rst:437
+msgid "Added a ``--debug`` flag to show debug-level log messages."
+msgstr ""
+
+#: ../../history.rst:438
+msgid ""
+"Better error messages when the module docstring or ``__version__`` is "
+"missing."
+msgstr ""
+
+#: ../../history.rst:441
+msgid "Version 0.4"
+msgstr ""
+
+#: ../../history.rst:443
+msgid ""
+"Users can now specify ``dist-name`` in the config file if they need to "
+"use different names on PyPI and for imports."
+msgstr ""
+
+#: ../../history.rst:445
+msgid ""
+"Classifiers are now checked against a locally cached list of valid "
+"classifiers."
+msgstr ""
+
+#: ../../history.rst:447
+msgid "Packages can be locally installed into environments for development."
+msgstr ""
+
+#: ../../history.rst:448
+msgid ""
+"Local installation now creates a PEP 376 ``.dist-info`` folder instead of"
+" ``.egg-info``."
+msgstr ""
+

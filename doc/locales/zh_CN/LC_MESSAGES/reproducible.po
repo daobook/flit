@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015, Thomas Kluyver
+# This file is distributed under the same license as the Flit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flit 3.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-25 13:21+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../reproducible.rst:2
+msgid "Reproducible builds"
+msgstr ""
+
+#: ../../reproducible.rst:6
+msgid ""
+"Wheels built by flit are reproducible: if you build from the same source "
+"code, you should be able to make wheels that are exactly identical, byte "
+"for byte. This is useful for verifying software. For more details, see "
+"`reproducible-builds.org <https://reproducible-builds.org/>`__."
+msgstr ""
+
+#: ../../reproducible.rst:11
+msgid ""
+"There is a caveat, however: wheels (which are zip files) include the "
+"modification timestamp from each file. This will probably be different on"
+" each computer, because it indicates when your local copy of the file was"
+" written, not when it was changed in version control. These timestamps "
+"can be overridden by the environment variable "
+":envvar:`SOURCE_DATE_EPOCH`."
+msgstr ""
+
+#: ../../reproducible.rst:24
+msgid "Normalising permission bits"
+msgstr ""
+
+#: ../../reproducible.rst:27
+msgid ""
+"Flit normalises the permission bits of files copied into a wheel to "
+"either 755 (executable) or 644. This means that a file is readable by all"
+" users and writable only by the user who owns it."
+msgstr ""
+
+#: ../../reproducible.rst:31
+msgid ""
+"The most popular version control systems only track the executable bit, "
+"so checking out the same repository on systems with different umasks "
+"(e.g. Debian and Fedora) produces files with different permissions. With "
+"Flit 0.11 and earlier, this difference would produce non-identical "
+"wheels."
+msgstr ""
+

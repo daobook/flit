@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015, Thomas Kluyver
+# This file is distributed under the same license as the Flit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flit 3.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-25 13:21+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../flit_ini.rst:4
+msgid "The flit.ini config file"
+msgstr ""
+
+#: ../../flit_ini.rst:6
+msgid "This file lives next to the module or package."
+msgstr ""
+
+#: ../../flit_ini.rst:10
+msgid ""
+"Flit 0.12 and above uses a :doc:`pyproject.toml file <pyproject_toml>` "
+"file to store this information. Run ``python3 -m flit.tomlify`` to "
+"convert a ``flit.ini`` file to ``pyproject.toml``."
+msgstr ""
+
+#: ../../flit_ini.rst:15
+msgid "Metadata section"
+msgstr ""
+
+#: ../../flit_ini.rst:17
+msgid "There are four required fields:"
+msgstr ""
+
+#: ../../flit_ini.rst:19
+msgid "module"
+msgstr ""
+
+#: ../../flit_ini.rst:20
+msgid "The name of the module/package, as you'd use in an import statement."
+msgstr ""
+
+#: ../../flit_ini.rst:21
+msgid "author"
+msgstr ""
+
+#: ../../flit_ini.rst:22
+msgid "Your name"
+msgstr ""
+
+#: ../../flit_ini.rst:23
+msgid "author-email"
+msgstr ""
+
+#: ../../flit_ini.rst:24
+msgid "Your email address"
+msgstr ""
+
+#: ../../flit_ini.rst:26
+msgid "home-page"
+msgstr ""
+
+#: ../../flit_ini.rst:26
+msgid "A URL for the project, such as its Github repository."
+msgstr ""
+
+#: ../../flit_ini.rst:28
+msgid "e.g. for flit itself"
+msgstr ""
+
+#: ../../flit_ini.rst:38
+msgid "The remaining fields are optional:"
+msgstr ""
+
+#: ../../flit_ini.rst:50
+msgid "requires"
+msgstr ""
+
+#: ../../flit_ini.rst:41
+msgid ""
+"A list of other packages from PyPI that this package needs. Each package "
+"should be on its own line, and may be followed by a version specifier in "
+"parentheses, like ``(>=4.1)``, and/or an `environment marker "
+"<https://www.python.org/dev/peps/pep-0345/#environment-markers>`_ after a"
+" semicolon. For example:"
+msgstr ""
+
+#: ../../flit_ini.rst:56
+msgid "dev-requires"
+msgstr ""
+
+#: ../../flit_ini.rst:53
+msgid ""
+"Packages that are required for development. This field is in the same "
+"format as ``requires``."
+msgstr ""
+
+#: ../../flit_ini.rst:56
+msgid ""
+"These are not (yet) encoded in the wheel, but are used when doing ``flit "
+"install``."
+msgstr ""
+
+#: ../../flit_ini.rst:62
+msgid "description-file"
+msgstr ""
+
+#: ../../flit_ini.rst:59
+msgid ""
+"A path (relative to the .ini file) to a file containing a longer "
+"description of your package to show on PyPI. This should be written in "
+"`reStructuredText "
+"<http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_, if your "
+"long description is not valid reStructuredText, a warning will be "
+"printed, and it will be interpreted as plain text on PyPI."
+msgstr ""
+
+#: ../../flit_ini.rst:65
+msgid "classifiers"
+msgstr ""
+
+#: ../../flit_ini.rst:65
+msgid ""
+"A list of `Trove classifiers "
+"<https://pypi.python.org/pypi?%3Aaction=list_classifiers>`_, one per "
+"line, indented."
+msgstr ""
+
+#: ../../flit_ini.rst:68
+msgid "requires-python"
+msgstr ""
+
+#: ../../flit_ini.rst:68
+msgid ""
+"A version specifier for the versions of Python this requires, e.g. "
+"``~=3.3`` or ``>=3.3,<4`` which are equivalents."
+msgstr ""
+
+#: ../../flit_ini.rst:71
+msgid "dist-name"
+msgstr ""
+
+#: ../../flit_ini.rst:71
+msgid ""
+"If you want your package's name on PyPI to be different from the "
+"importable module name, set this to the PyPI name."
+msgstr ""
+
+#: ../../flit_ini.rst:73
+msgid "keywords"
+msgstr ""
+
+#: ../../flit_ini.rst:74
+msgid "Comma separated list of words to help with searching for your package."
+msgstr ""
+
+#: ../../flit_ini.rst:77
+msgid "license"
+msgstr ""
+
+#: ../../flit_ini.rst:76
+msgid ""
+"The name of a license, if you're using one for which there isn't a Trove "
+"classifier. It's recommended to use Trove classifiers instead of this in "
+"most cases."
+msgstr ""
+
+#: ../../flit_ini.rst:80
+msgid "maintainer, maintainer-email"
+msgstr ""
+
+#: ../../flit_ini.rst:80
+msgid "Like author, for if you've taken over a project from someone else."
+msgstr ""
+
+#: ../../flit_ini.rst:82
+msgid "Here's the full example from flit itself:"
+msgstr ""
+
+#: ../../flit_ini.rst:101
+msgid "Scripts section"
+msgstr ""
+
+#: ../../flit_ini.rst:103
+msgid ""
+"Each key and value in this describes a shell command to be installed "
+"along with your package. These work like setuptools 'entry points'. "
+"Here's the section for flit:"
+msgstr ""
+
+#: ../../flit_ini.rst:112
+msgid ""
+"This will create a ``flit`` command, which will call the function "
+"``main()`` imported from :mod:`flit`."
+msgstr ""
+
