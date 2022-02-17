@@ -14,8 +14,7 @@ def get_data_dir():
     if sys.platform == 'darwin':
         d = Path(home, 'Library')
     elif os.name == 'nt':
-        appdata = os.environ.get('APPDATA', None)
-        if appdata:
+        if appdata := os.environ.get('APPDATA', None):
             d = Path(appdata)
         else:
             d = Path(home, 'AppData', 'Roaming')
@@ -99,7 +98,7 @@ class IniterBase:
 
         if len(packages) == 1:
             return packages[0]
-        elif len(packages) == 0 and len(modules) == 1:
+        elif not packages and len(modules) == 1:
             return modules[0]
         else:
             return None
@@ -127,10 +126,14 @@ class IniterBase:
 
     def find_readme(self):
         allowed = ("readme.md","readme.rst","readme.txt")
-        for fl in self.directory.glob("*.*"):
-            if fl.name.lower() in allowed:
-                return fl.name
-        return None
+        return next(
+            (
+                fl.name
+                for fl in self.directory.glob("*.*")
+                if fl.name.lower() in allowed
+            ),
+            None,
+        )
 
 
 class TerminalIniter(IniterBase):
@@ -138,7 +141,7 @@ class TerminalIniter(IniterBase):
         if default is not None:
             p = "{} [{}]: ".format(prompt, default)
         else:
-            p = prompt + ': '
+            p = f'{prompt}: '
         while True:
             response = input(p)
             if response == '' and default is not None:
@@ -158,10 +161,10 @@ class TerminalIniter(IniterBase):
                 default_ix = i
 
         while True:
-            p = "Enter 1-" + str(len(options))
+            p = f'Enter 1-{len(options)}'
             if default_ix is not None:
                 p += ' [{}]'.format(default_ix)
-            response = input(p+': ')
+            response = input(f'{p}: ')
             if (default_ix is not None) and response == '':
                 return default
 
@@ -208,11 +211,7 @@ class TerminalIniter(IniterBase):
             author_info.append(f'name = {json.dumps(author, ensure_ascii=False)}')
         if author_email:
             author_info.append(f'email = {json.dumps(author_email)}')
-        if author_info:
-            authors_list = "[{%s}]" % ", ".join(author_info)
-        else:
-            authors_list = "[]"
-
+        authors_list = "[{%s}]" % ", ".join(author_info) if author_info else "[]"
         classifiers = []
         if license != 'skip':
             classifiers = [license_names_to_classifiers[license]]

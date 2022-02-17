@@ -141,8 +141,7 @@ class SdistBuilder:
         crucial_files = set(
             self.extra_files + [str(self.module.file.relative_to(self.cfgdir))]
         )
-        missing_crucial = crucial_files - files
-        if missing_crucial:
+        if missing_crucial := crucial_files - files:
             raise Exception("Crucial files were excluded from the sdist: {}"
                             .format(", ".join(missing_crucial)))
 

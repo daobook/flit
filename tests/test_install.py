@@ -76,7 +76,7 @@ class InstallTests(TestCase):
         assert_isdir(self.tmpdir / 'site-packages' / 'package1-0.1.dist-info')
         assert_isfile(self.tmpdir / 'scripts' / 'pkg_script')
         with (self.tmpdir / 'scripts' / 'pkg_script').open() as f:
-            assert f.readline().strip() == "#!" + sys.executable
+            assert f.readline().strip() == f'#!{sys.executable}'
         self._assert_direct_url(
             samples_dir / 'package1', 'package1', '0.1', expected_editable=False
         )
@@ -147,7 +147,7 @@ class InstallTests(TestCase):
                       to=samples_dir / 'package1' / 'package1')
         assert_isfile(self.tmpdir / 'scripts' / 'pkg_script')
         with (self.tmpdir / 'scripts' / 'pkg_script').open() as f:
-            assert f.readline().strip() == "#!" + sys.executable
+            assert f.readline().strip() == f'#!{sys.executable}'
         self._assert_direct_url(
             samples_dir / 'package1', 'package1', '0.1', expected_editable=True
         )

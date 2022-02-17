@@ -23,9 +23,9 @@ class Module(object):
         # It must exist either as a .py file or a directory, but not both
         name_as_path = name.replace('.', os.sep)
         pkg_dir = directory / name_as_path
-        py_file = directory / (name_as_path+'.py')
+        py_file = directory / f'{name_as_path}.py'
         src_pkg_dir = directory / 'src' / name_as_path
-        src_py_file = directory / 'src' / (name_as_path+'.py')
+        src_py_file = directory / 'src' / f'{name_as_path}.py'
 
         existing = set()
         if pkg_dir.is_dir():
@@ -65,10 +65,7 @@ class Module(object):
 
     @property
     def file(self):
-        if self.is_package:
-            return self.path / '__init__.py'
-        else:
-            return self.path
+        return self.path / '__init__.py' if self.is_package else self.path
 
     def iter_files(self):
         """Iterate over the files contained in this module.
@@ -130,16 +127,13 @@ def get_docstring_and_version_via_ast(target):
     with target.file.open('rb') as f:
         node = ast.parse(f.read())
     for child in node.body:
-        # Only use the version from the given module if it's a simple
-        # string assignment to __version__
-        is_version_str = (
-                isinstance(child, ast.Assign)
-                and len(child.targets) == 1
-                and isinstance(child.targets[0], ast.Name)
-                and child.targets[0].id == "__version__"
-                and isinstance(child.value, ast.Str)
-        )
-        if is_version_str:
+        if is_version_str := (
+            isinstance(child, ast.Assign)
+            and len(child.targets) == 1
+            and isinstance(child.targets[0], ast.Name)
+            and child.targets[0].id == "__version__"
+            and isinstance(child.value, ast.Str)
+        ):
             version = child.value.s
             break
     else:
@@ -385,10 +379,10 @@ class Metadata(object):
     @property
     def supports_py2(self):
         """Return True if Requires-Python indicates Python 2 support."""
-        for part in (self.requires_python or "").split(","):
-            if re.search(r"^\s*(>\s*(=\s*)?)?[3-9]", part):
-                return False
-        return True
+        return not any(
+            re.search(r"^\s*(>\s*(=\s*)?)?[3-9]", part)
+            for part in (self.requires_python or "").split(",")
+        )
 
 
 def make_metadata(module, ini_info):
@@ -415,4 +409,4 @@ def normalize_dist_name(name: str, version: str) -> str:
 
 def dist_info_name(distribution, version):
     """Get the correct name of the .dist-info folder"""
-    return normalize_dist_name(distribution, version) + '.dist-info'
+    return f'{normalize_dist_name(distribution, version)}.dist-info'

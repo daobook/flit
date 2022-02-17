@@ -157,31 +157,31 @@ class WheelBuilder:
             self._add_file(full_path, rel_path)
 
     def add_pth(self):
-        with self._write_to_zip(self.module.name + ".pth") as f:
+        with self._write_to_zip(f'{self.module.name}.pth') as f:
             f.write(str(self.module.source_dir.resolve()))
 
     def write_metadata(self):
         log.info('Writing metadata files')
 
         if self.entrypoints:
-            with self._write_to_zip(self.dist_info + '/entry_points.txt') as f:
+            with self._write_to_zip(f'{self.dist_info}/entry_points.txt') as f:
                 common.write_entry_points(self.entrypoints, f)
 
         for base in ('COPYING', 'LICENSE'):
-            for path in sorted(self.directory.glob(base + '*')):
+            for path in sorted(self.directory.glob(f'{base}*')):
                 if path.is_file():
                     self._add_file(path, '%s/%s' % (self.dist_info, path.name))
 
-        with self._write_to_zip(self.dist_info + '/WHEEL') as f:
+        with self._write_to_zip(f'{self.dist_info}/WHEEL') as f:
             _write_wheel_file(f, supports_py2=self.metadata.supports_py2)
 
-        with self._write_to_zip(self.dist_info + '/METADATA') as f:
+        with self._write_to_zip(f'{self.dist_info}/METADATA') as f:
             self.metadata.write_metadata_file(f)
 
     def write_record(self):
         log.info('Writing the record of files')
         # Write a record of the files in the wheel
-        with self._write_to_zip(self.dist_info + '/RECORD') as f:
+        with self._write_to_zip(f'{self.dist_info}/RECORD') as f:
             for path, hash, size in self.records:
                 f.write(u'{},sha256={},{}\n'.format(path, hash, size))
             # RECORD itself is recorded with no hash or size

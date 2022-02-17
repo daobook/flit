@@ -42,7 +42,7 @@ def test_load_pep621_nodynamic():
     assert inf.metadata['name'] == 'module1'
     assert inf.metadata['version'] == '0.3'
     assert inf.metadata['summary'] == 'Statically specified description'
-    assert set(inf.dynamic_metadata) == set()
+    assert not set(inf.dynamic_metadata)
 
     # Filling reqs_by_extra when dependencies were specified but no optional
     # dependencies was a bug.
