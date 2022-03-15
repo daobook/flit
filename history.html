@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Release history &mdash; Flit 3.6.0 文档</title>
+  <title>Release history &mdash; Flit 3.7.1 文档</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
             <a href="index.html" class="icon icon-home"> Flit
           </a>
               <div class="version">
-                3.6.0
+                3.7.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,6 +51,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="development.html">Developing Flit</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release history</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-7-1">Version 3.7.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-3-7">Version 3.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-3-6">Version 3.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-3-5-1">Version 3.5.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#version-3-5">Version 3.5</a></li>
@@ -115,6 +117,29 @@
              
   <section id="release-history">
 <h1>Release history<a class="headerlink" href="#release-history" title="永久链接至标题"></a></h1>
+<section id="version-3-7-1">
+<h2>Version 3.7.1<a class="headerlink" href="#version-3-7-1" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Fix building packages which need execution to get the version number,
+and have a relative import in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> (<a class="reference external" href="https://github.com/pypa/flit/pull/531/">PR #531</a>).</p></li>
+</ul>
+</section>
+<section id="version-3-7">
+<h2>Version 3.7<a class="headerlink" href="#version-3-7" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>Support for <a class="reference internal" href="pyproject_toml.html#pyproject-toml-external-data"><span class="std std-ref">external data files</span></a> such
+as man pages or Jupyter extension support files (<a class="reference external" href="https://github.com/pypa/flit/pull/510/">PR #510</a>).</p></li>
+<li><p>Project names are now lowercase in wheel filenames and <code class="docutils literal notranslate"><span class="pre">.dist-info</span></code> folder
+names, in line with the specifications (<a class="reference external" href="https://github.com/pypa/flit/pull/498/">PR #498</a>).</p></li>
+<li><p>Improved support for <a class="reference internal" href="bootstrap.html"><span class="doc">bootstrapping</span></a> a Python environment,
+e.g. for downstream packagers (<a class="reference external" href="https://github.com/pypa/flit/pull/511/">PR #511</a>). <code class="docutils literal notranslate"><span class="pre">flit_core.wheel</span></code> is usable
+with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span></code> to create wheels before the <a class="reference external" href="https://pypi.org/project/build/">build</a>
+tool is available, and <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> sdists also include a script to install
+itself from a wheel before <a class="reference external" href="https://pypi.org/project/installer/">installer</a>
+is available.</p></li>
+<li><p>Use newer importlib APIs, fixing some deprecation warnings (<a class="reference external" href="https://github.com/pypa/flit/pull/499/">PR #499</a>).</p></li>
+</ul>
+</section>
 <section id="version-3-6">
 <h2>Version 3.6<a class="headerlink" href="#version-3-6" title="永久链接至标题"></a></h2>
 <ul class="simple">

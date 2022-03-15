@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pyproject.toml 配置文件 &mdash; Flit 3.6.0 文档</title>
+  <title>pyproject.toml 配置文件 &mdash; Flit 3.7.1 文档</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="Flit command line interface" href="cmdline.html" />
-    <link rel="prev" title="Flit 3.6.0" href="index.html" /> 
+    <link rel="prev" title="Flit 3.7.1" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -31,7 +31,7 @@
             <a href="index.html" class="icon icon-home"> Flit
           </a>
               <div class="version">
-                3.6.0
+                3.7.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -59,6 +59,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sdist-section">Sdist 部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-data-section">External data section</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cmdline.html">Flit command line interface</a></li>
@@ -402,13 +403,46 @@ They are in the same format as the newer <code class="docutils literal notransla
 <p>如果你没有使用 <a class="reference internal" href="cmdline.html#build-cmd"><span class="std std-ref">flit build</span></a>，而是通过其他构建前端使用 <code class="docutils literal notranslate"><span class="pre">flit_core</span></code>，Flit 不会检查 VCS 中的文件，而是构建一个 ‘最小’ 的 sdist（其中包括构建轮子所需的文件）。你必须调整你的包含/排除规则，以达到与你用 <a class="reference internal" href="cmdline.html#build-cmd"><span class="std std-ref">flit build</span></a> 得到的相同结果。</p>
 </div>
 </section>
+<section id="external-data-section">
+<span id="pyproject-toml-external-data"></span><h2>External data section<a class="headerlink" href="#external-data-section" title="永久链接至标题"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">3.7 新版功能.</span></p>
+</div>
+<p>Data files which your code will use should go inside the Python package folder.
+Flit will package these with no special configuration.</p>
+<p>However, sometimes it’s useful to package external files for system integration,
+such as man pages or files defining a Jupyter extension. To do this, arrange
+the files within a directory such as <code class="docutils literal notranslate"><span class="pre">data</span></code>, next to your <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>
+file, and add a section like this:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.flit.external-data]</span><span class="w"></span>
+<span class="n">directory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;data&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Paths within this directory are typically installed to corresponding paths under
+a prefix (such as a virtualenv directory). E.g. you might save a man page for a
+script as <code class="docutils literal notranslate"><span class="pre">(data)/share/man/man1/foo.1</span></code>.</p>
+<p>Whether these files are detected by the systems they’re meant to integrate with
+depends on how your package is installed and how those systems are configured.
+For instance, installing in a virtualenv usually doesn’t affect anything outside
+that environment. Don’t rely on these files being picked up unless you have
+close control of how the package will be installed.</p>
+<p>If you install a package with <code class="docutils literal notranslate"><span class="pre">flit</span> <span class="pre">install</span> <span class="pre">--symlink</span></code>, a symlink is made
+for each file in the external data directory. Otherwise (including development
+installs with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span></code>), these files are copied to their destination,
+so changes here won’t take effect until you reinstall the package.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>For users coming from setuptools: external data corresponds to setuptools’
+<code class="docutils literal notranslate"><span class="pre">data_files</span></code> parameter, although setuptools offers more flexibility.</p>
+</div>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Flit 3.6.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Flit 3.7.1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
         <a href="cmdline.html" class="btn btn-neutral float-right" title="Flit command line interface" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

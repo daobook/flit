@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bootstrapping &mdash; Flit 3.6.0 文档</title>
+  <title>Bootstrapping &mdash; Flit 3.7.1 文档</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
             <a href="index.html" class="icon icon-home"> Flit
           </a>
               <div class="version">
-                3.6.0
+                3.7.1
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -91,25 +91,29 @@ putting Python packages into another package format.</p>
 </div>
 <p>The key piece is <code class="docutils literal notranslate"><span class="pre">flit_core</span></code>. This is a package which can build itself using
 nothing except Python and the standard library. From an unpacked source archive,
-you can run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">build_dists.py</span></code>, of which the crucial part is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flit_core</span> <span class="kn">import</span> <span class="n">buildapi</span>
-<span class="n">whl_fname</span> <span class="o">=</span> <span class="n">buildapi</span><span class="o">.</span><span class="n">build_wheel</span><span class="p">(</span><span class="s1">&#39;dist/&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;dist&#39;</span><span class="p">,</span> <span class="n">whl_fname</span><span class="p">))</span>
+you can make a wheel by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">flit_core</span><span class="o">.</span><span class="n">wheel</span>
 </pre></div>
 </div>
-<p>This produces a <code class="docutils literal notranslate"><span class="pre">.whl</span></code> wheel file, which you can unzip into your
-<code class="docutils literal notranslate"><span class="pre">site-packages</span></code> folder (or equivalent) to make <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> available for
-building other packages. (You could also just copy <code class="docutils literal notranslate"><span class="pre">flit_core</span></code> from the
-source directory, but without the <code class="docutils literal notranslate"><span class="pre">.dist-info</span></code> folder, tools like pip won’t
-know that it’s installed.)</p>
+<p>And then you can install this wheel with the <code class="docutils literal notranslate"><span class="pre">bootstrap_install.py</span></code> script
+included in the sdist (or by unzipping it to the correct directory):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install to site-packages for this Python:</span>
+<span class="n">python</span> <span class="n">bootstrap_install</span><span class="o">.</span><span class="n">py</span> <span class="n">dist</span><span class="o">/</span><span class="n">flit_core</span><span class="o">-*.</span><span class="n">whl</span>
+
+<span class="c1"># Install somewhere else:</span>
+<span class="n">python</span> <span class="n">bootstrap_install</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">installdir</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span> <span class="n">dist</span><span class="o">/</span><span class="n">flit_core</span><span class="o">-*.</span><span class="n">whl</span>
+</pre></div>
+</div>
 <p>As of version 3.6, flit_core bundles the <code class="docutils literal notranslate"><span class="pre">tomli</span></code> TOML parser, to avoid a
 dependency cycle. If you need to unbundle it, you will need to special-case
 installing flit_core and/or tomli to get around that cycle.</p>
-<p>I recommend that you get the <a class="reference external" href="https://pypi.org/project/build/">build</a> and
-<a class="reference external" href="https://pypi.org/project/installer/">installer</a> packages (and their
-dependencies) installed as the goal of the bootstrapping phase. These tools
-together can be used to install any other Python packages: <code class="docutils literal notranslate"><span class="pre">build</span></code> to create
-wheels and <code class="docutils literal notranslate"><span class="pre">installer</span></code> to install them.</p>
+<p>After <code class="docutils literal notranslate"><span class="pre">flit_core</span></code>, I recommend that you get <a class="reference external" href="https://pypi.org/project/installer/">installer</a> set up. You can use
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">flit_core.wheel</span></code> again to make a wheel, and then use installer
+itself (from the source directory) to install it.</p>
+<p>After that, you probably want to get <a class="reference external" href="https://pypi.org/project/build/">build</a>
+and its dependencies installed as the goal of the bootstrapping phase. You can
+then use <code class="docutils literal notranslate"><span class="pre">build</span></code> to create wheels of any other Python packages, and
+<code class="docutils literal notranslate"><span class="pre">installer</span></code> to install them.</p>
 </section>
 
 
