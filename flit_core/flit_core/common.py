@@ -3,6 +3,7 @@ from contextlib import contextmanager
 import hashlib
 import logging
 import os
+import sys
 
 from pathlib import Path
 import re
@@ -163,10 +164,21 @@ def get_docstring_and_version_via_import(target):
     _import_i += 1
 
     log.debug("Loading module %s", target.file)
-    from importlib.machinery import SourceFileLoader
-    sl = SourceFileLoader('flit_core.dummy.import%d' % _import_i, str(target.file))
+    from importlib.util import spec_from_file_location, module_from_spec
+    mod_name = 'flit_core.dummy.import%d' % _import_i
+    spec = spec_from_file_location(mod_name, target.file)
     with _module_load_ctx():
-        m = sl.load_module()
+        m = module_from_spec(spec)
+        # Add the module to sys.modules to allow relative imports to work.
+        # importlib has more code around this to handle the case where two
+        # threads are trying to load the same module at the same time, but Flit
+        # should always be running a single thread, so we won't duplicate that.
+        sys.modules[mod_name] = m
+        try:
+            spec.loader.exec_module(m)
+        finally:
+            sys.modules.pop(mod_name, None)
+
     docstring = m.__dict__.get('__doc__', None)
     version = m.__dict__.get('__version__', None)
     return docstring, version
@@ -416,3 +428,20 @@ def normalize_dist_name(name: str, version: str) -> str:
 def dist_info_name(distribution, version):
     """Get the correct name of the .dist-info folder"""
     return normalize_dist_name(distribution, version) + '.dist-info'
+
+
+def walk_data_dir(data_directory):
+    """Iterate over the files in the given data directory.
+
+    Yields paths prefixed with data_directory - caller may want to make them
+    relative to that. Excludes any __pycache__ subdirectories.
+    """
+    if data_directory is None:
+        return
+
+    for dirpath, dirs, files in os.walk(data_directory):
+        for file in sorted(files):
+            full_path = os.path.join(dirpath, file)
+            yield full_path
+
+        dirs[:] = [d for d in sorted(dirs) if d != '__pycache__']

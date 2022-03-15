@@ -1,3 +1,4 @@
+import argparse
 from base64 import urlsafe_b64encode
 import contextlib
 from datetime import datetime
@@ -8,6 +9,7 @@ import os
 import os.path as osp
 import stat
 import tempfile
+from pathlib import Path
 from types import SimpleNamespace
 from typing import Optional
 import zipfile
@@ -57,13 +59,16 @@ def zip_timestamp_from_env() -> Optional[tuple]:
 
 
 class WheelBuilder:
-    def __init__(self, directory, module, metadata, entrypoints, target_fp):
+    def __init__(
+            self, directory, module, metadata, entrypoints, target_fp, data_directory
+    ):
         """Build a wheel from a module/package
         """
         self.directory = directory
         self.module = module
         self.metadata = metadata
         self.entrypoints = entrypoints
+        self.data_directory = data_directory
 
         self.records = []
         self.source_time_stamp = zip_timestamp_from_env()
@@ -74,14 +79,15 @@ class WheelBuilder:
 
     @classmethod
     def from_ini_path(cls, ini_path, target_fp):
-        # Local import so bootstrapping doesn't try to load toml
         from .config import read_flit_config
         directory = ini_path.parent
         ini_info = read_flit_config(ini_path)
         entrypoints = ini_info.entrypoints
         module = common.Module(ini_info.module, directory)
         metadata = common.make_metadata(module, ini_info)
-        return cls(directory, module, metadata, entrypoints, target_fp)
+        return cls(
+            directory, module, metadata, entrypoints, target_fp, ini_info.data_directory
+        )
 
     @property
     def dist_info(self):
@@ -160,6 +166,14 @@ class WheelBuilder:
         with self._write_to_zip(self.module.name + ".pth") as f:
             f.write(str(self.module.source_dir.resolve()))
 
+    def add_data_directory(self):
+        dir_in_whl = '{}.data/data/'.format(
+            common.normalize_dist_name(self.metadata.name, self.metadata.version)
+        )
+        for full_path in common.walk_data_dir(self.data_directory):
+            rel_path = os.path.relpath(full_path, self.data_directory)
+            self._add_file(full_path, dir_in_whl + rel_path)
+
     def write_metadata(self):
         log.info('Writing metadata files')
 
@@ -193,6 +207,7 @@ class WheelBuilder:
                 self.add_pth()
             else:
                 self.copy_module()
+            self.add_data_directory()
             self.write_metadata()
             self.write_record()
         finally:
@@ -215,3 +230,30 @@ def make_wheel_in(ini_path, wheel_directory, editable=False):
 
     log.info("Built wheel: %s", wheel_path)
     return SimpleNamespace(builder=wb, file=wheel_path)
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        'srcdir',
+        type=Path,
+        nargs='?',
+        default=Path.cwd(),
+        help='source directory (defaults to current directory)',
+    )
+
+    parser.add_argument(
+        '--outdir',
+        '-o',
+        help='output directory (defaults to {srcdir}/dist)',
+    )
+    args = parser.parse_args(argv)
+    outdir = args.srcdir / 'dist' if args.outdir is None else Path(args.outdir)
+    print("Building wheel from", args.srcdir)
+    pyproj_toml = args.srcdir / 'pyproject.toml'
+    outdir.mkdir(parents=True, exist_ok=True)
+    info = make_wheel_in(pyproj_toml, outdir)
+    print("Wheel built", outdir / info.file.name)
+
+if __name__ == "__main__":
+    main()
